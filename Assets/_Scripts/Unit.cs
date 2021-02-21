@@ -1,18 +1,9 @@
-﻿using UnityEngine;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
-[CreateAssetMenu(fileName = "UnitName", menuName = "Unit")]
-public class Unit : ScriptableObject
+public class Unit : MonoBehaviour
 {
     [SerializeField]
-    private int health = 100;
-
-    [SerializeField]
-    private Tag[] tags;
-
-    [SerializeField]
-    private int damageDealt = 0;
-
-    [SerializeField]
-    private Sprite[] sprites;
+    private UnitProperties unitProperties;
 }

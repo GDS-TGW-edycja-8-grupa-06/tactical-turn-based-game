@@ -7,7 +7,8 @@ using UnityEngine.Tilemaps;
 public class BattleSystem : MonoBehaviour
 {
     [SerializeField]
-    private LayerMask playerOneLayerMask;
+    public LayerMask playerOneLayerMask;
+    public LayerMask playerTwoLayerMask;
 
     [HideInInspector]
     public GameObject selectedUnit;
@@ -18,6 +19,9 @@ public class BattleSystem : MonoBehaviour
     [SerializeField]
     public Tilemap[] walkableArea;
 
+    [HideInInspector]
+    public GamePhase gamePhase = GamePhase.PlayerOne;
+
     private void Start()
     {
         sm = new SKStateMachine<BattleSystem>(this, new Idle());
@@ -26,6 +30,12 @@ public class BattleSystem : MonoBehaviour
 
     void Update()
     {
-        sm.update(Time.deltaTime);        
+        sm.update(Time.deltaTime);
     }
+}
+
+public enum GamePhase
+{
+    PlayerOne,
+    PlayerTwo
 }

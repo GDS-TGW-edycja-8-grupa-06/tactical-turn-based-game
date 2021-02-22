@@ -11,7 +11,9 @@ public class Idle : SKState<BattleSystem>
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 mousePosition2D = new Vector2(mousePosition.x, mousePosition.y);
 
-            RaycastHit2D hit = Physics2D.Raycast(mousePosition2D, Vector2.zero);
+            LayerMask playerLayerMask = _context.gamePhase == GamePhase.PlayerOne ? _context.playerOneLayerMask : _context.playerTwoLayerMask;
+
+            RaycastHit2D hit = Physics2D.Raycast(mousePosition2D, Vector2.zero, Mathf.Infinity, 1 << playerLayerMask);
 
             if (hit.collider != null)
             {

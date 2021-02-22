@@ -9,11 +9,13 @@ public class MovingPawn : SKState<BattleSystem>
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Vector3Int tilemapPos = _context.walkableArea[0].WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            Vector3Int tilemapPosition = _context.walkableArea[0].WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
-            Tile tile = _context.walkableArea[0].GetTile<Tile>(tilemapPos);
+            Tile tile = _context.walkableArea[0].GetTile<Tile>(tilemapPosition);
 
             _context.sm.changeState<Idle>();
+
+            _context.selectedUnit.transform.position = new Vector3(tilemapPosition.x, tilemapPosition.y, 0);
 
             return;
         }

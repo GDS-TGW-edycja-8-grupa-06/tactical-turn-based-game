@@ -15,7 +15,7 @@ public class MovingPawn : SKState<BattleSystem>
 
             _context.sm.changeState<Idle>();
 
-            _context.selectedUnit.transform.position = new Vector3(tilemapPosition.x, tilemapPosition.y, 0);
+            _context.selectedUnit.transform.position = new Vector3(tilemapPosition.x + 1, tilemapPosition.y, 0);
 
             return;
         }

@@ -9,6 +9,8 @@ public class BattleSystem : MonoBehaviour
     [SerializeField]
     public LayerMask playerOneLayerMask;
     public LayerMask playerTwoLayerMask;
+    public LayerMask restrictedArea;
+    public LayerMask walkableArea;
 
     [HideInInspector]
     public GameObject selectedUnit;
@@ -17,7 +19,7 @@ public class BattleSystem : MonoBehaviour
     public SKStateMachine<BattleSystem> sm;
 
     [SerializeField]
-    public Tilemap[] walkableArea;
+    public Tilemap grid;
 
     [HideInInspector]
     public GamePhase gamePhase = GamePhase.PlayerOne;

@@ -5,5 +5,16 @@ using UnityEngine;
 public class Unit : MonoBehaviour
 {
     [SerializeField]
-    private UnitProperties unitProperties;
+    public UnitProperties unitProperties;
+
+    [SerializeField]
+    public Side side;
+
+
+}
+
+public enum Side
+{
+    PlayerOne,
+    PlayerTwo
 }

@@ -13,7 +13,7 @@ public class Idle : SKState<BattleSystem>
 
             LayerMask playerLayerMask = _context.gamePhase == GamePhase.PlayerOne ? _context.playerOneLayerMask : _context.playerTwoLayerMask;
 
-            RaycastHit2D hit = Physics2D.Raycast(mousePosition2D, Vector2.zero, Mathf.Infinity, 1 << playerLayerMask);
+            RaycastHit2D hit = Physics2D.Raycast(mousePosition2D, Vector2.zero, Mathf.Infinity, playerLayerMask);
 
             if (hit.collider != null)
             {

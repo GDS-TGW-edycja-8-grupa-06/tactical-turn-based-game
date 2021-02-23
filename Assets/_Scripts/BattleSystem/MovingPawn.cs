@@ -16,8 +16,10 @@ public class MovingPawn : SKState<BattleSystem>
                 _context.sm.changeState<Idle>();
                 _context.selectedUnit.transform.position = targetPosition;
             }
-
-            return;
+            else
+            {
+                _machine.changeState<Idle>();
+            }
         }
     }
 

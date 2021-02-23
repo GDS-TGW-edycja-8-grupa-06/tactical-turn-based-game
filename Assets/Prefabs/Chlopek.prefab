@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitProperties: {fileID: 11400000, guid: 351b81adaf904624295ce786d3e3fa18, type: 2}
+  side: 0
 --- !u!61 &1892418292773268636
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -1599,6 +1599,7 @@ MonoBehaviour:
   selectedUnit: {fileID: 0}
   grid: {fileID: 249475830}
   gamePhase: 0
+  touchedUnitCount: 0
 --- !u!4 &306917737
 Transform:
   m_ObjectHideFlags: 0

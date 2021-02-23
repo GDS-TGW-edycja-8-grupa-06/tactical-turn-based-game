@@ -15,6 +15,13 @@ public class MovingPawn : SKState<BattleSystem>
             {
                 _context.sm.changeState<Idle>();
                 _context.selectedUnit.transform.position = targetPosition;
+                _context.touchedUnitCount += 1;
+
+                if (_context.touchedUnitCount == 5)
+                {
+                    _machine.changeState<ChangeSide>();
+                }
+
             }
             else
             {

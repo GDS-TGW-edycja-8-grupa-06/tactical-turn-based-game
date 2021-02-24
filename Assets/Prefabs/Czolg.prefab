@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd749d47b967dc42b68eb64f0f93a57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitProperties: {fileID: 0}
+  unitProperties: {fileID: 11400000, guid: a6493bfb5e48e044fa99a2bc4edc8281, type: 2}
   side: 0
 --- !u!61 &-2299121297899933306
 BoxCollider2D:

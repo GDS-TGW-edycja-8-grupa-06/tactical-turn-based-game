@@ -23,7 +23,7 @@ public class BattleSystem : MonoBehaviour
 
     [HideInInspector]
     public GamePhase gamePhase = GamePhase.PlayerOne;
-
+    
     [HideInInspector]
     public int touchedUnitCount = 0;
 

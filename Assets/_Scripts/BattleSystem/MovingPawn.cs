@@ -13,20 +13,27 @@ public class MovingPawn : SKState<BattleSystem>
 
             if (IsMoveValid(ref targetPosition))
             {
-                _context.sm.changeState<Idle>();
-                _context.selectedUnit.transform.position = targetPosition;
-                _context.touchedUnitCount += 1;
+                bool pawnAlreadyToched = true;
+                
+                pawnAlreadyToched = _context.touchedPawns.Contains(_context.selectedPawn);
 
-                if (_context.touchedUnitCount == 5)
+                if (!pawnAlreadyToched)
+                {
+                    _context.touchedPawns.Add(_context.selectedPawn);
+                    _context.selectedPawn.transform.position = targetPosition;
+                }
+                else
+                {
+                    _machine.changeState<Idle>();
+                }
+
+                if (_context.touchedPawns.Count == 5)
                 {
                     _machine.changeState<ChangeSide>();
                 }
+            }
 
-            }
-            else
-            {
-                _machine.changeState<Idle>();
-            }
+            _context.sm.changeState<Idle>();
         }
     }
 

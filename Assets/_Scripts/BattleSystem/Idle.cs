@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Prime31.StateKit;
+using System.Linq;
 
 public class Idle : SKState<BattleSystem>
 {
@@ -16,8 +17,9 @@ public class Idle : SKState<BattleSystem>
             RaycastHit2D hit = Physics2D.Raycast(mousePosition2D, Vector2.zero, Mathf.Infinity, playerLayerMask);
 
             if (hit.collider != null)
-            {
-                _context.selectedUnit = hit.collider.gameObject;
+            {   
+                _context.selectedPawn = hit.collider.gameObject;
+                                
                 _context.sm.changeState<MovingPawn>();
             }
         }

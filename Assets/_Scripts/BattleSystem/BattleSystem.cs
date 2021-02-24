@@ -13,7 +13,7 @@ public class BattleSystem : MonoBehaviour
     public LayerMask walkableArea;
 
     [HideInInspector]
-    public GameObject selectedUnit;
+    public GameObject selectedPawn;
 
     [HideInInspector]
     public SKStateMachine<BattleSystem> sm;
@@ -24,9 +24,12 @@ public class BattleSystem : MonoBehaviour
     [HideInInspector]
     public GamePhase gamePhase = GamePhase.PlayerOne;
     
-    [HideInInspector]
-    public int touchedUnitCount = 0;
+    //[HideInInspector]
+    //public int touchedUnitCount = 0;
 
+    [HideInInspector]
+    public List<GameObject> touchedPawns;
+    
     private void Start()
     {
         sm = new SKStateMachine<BattleSystem>(this, new Idle());

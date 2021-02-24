@@ -12,13 +12,12 @@ public class ChangeSide : SKState<BattleSystem>
     public override void begin()
     {
         base.begin();
-
-        _context.touchedUnitCount = 0;
-
+        
         GamePhase currentPhase = _context.gamePhase;
         GamePhase newPhase = currentPhase == GamePhase.PlayerOne ? GamePhase.PlayerTwo : GamePhase.PlayerOne;
 
         _context.gamePhase = newPhase;
+        _context.touchedPawns.RemoveAll(pawn => true);
 
         _machine.changeState<Idle>();
     }

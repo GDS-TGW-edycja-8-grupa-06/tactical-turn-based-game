@@ -24,12 +24,6 @@ public class BattleSystem : MonoBehaviour
     [HideInInspector]
     public GamePhase gamePhase = GamePhase.PlayerOne;
     
-    //[HideInInspector]
-    //public int touchedUnitCount = 0;
-
-    [HideInInspector]
-    public List<GameObject> touchedPawns;
-    
     private void Start()
     {
         sm = new SKStateMachine<BattleSystem>(this, new Idle());

@@ -5,20 +5,20 @@ using System.Collections.Generic;
 public class UnitProperties : ScriptableObject
 {
     [SerializeField]
-    private int health = 100;
+    public int health = 100;
 
     [SerializeField]
-    private Tag[] tags;
+    public Tag[] tags;
 
     [SerializeField]
-    private int damageDealt = 0;
+    public int damageDealt = 0;
 
     [SerializeField]
-    private int moveRange = 0;
+    public int moveRange = 0;
 
     [SerializeField]
-    private int attackRange = 0;
+    public int attackRange = 0;
 
     [SerializeField]
-    private Sprite[] sprites;
+    public Sprite[] sprites;
 }

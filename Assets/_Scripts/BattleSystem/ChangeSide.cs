@@ -17,8 +17,7 @@ public class ChangeSide : SKState<BattleSystem>
         GamePhase newPhase = currentPhase == GamePhase.PlayerOne ? GamePhase.PlayerTwo : GamePhase.PlayerOne;
 
         _context.gamePhase = newPhase;
-        _context.touchedPawns.RemoveAll(pawn => true);
-
+        
         _machine.changeState<Idle>();
     }
 }

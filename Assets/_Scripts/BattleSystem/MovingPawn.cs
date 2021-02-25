@@ -13,13 +13,8 @@ public class MovingPawn : SKState<BattleSystem>
 
             if (IsMoveValid(ref targetPosition))
             {
-                bool pawnAlreadyToched = true;
-                
-                pawnAlreadyToched = _context.touchedPawns.Contains(_context.selectedPawn);
-
-                if (!pawnAlreadyToched)
-                {
-                    _context.touchedPawns.Add(_context.selectedPawn);
+                if (IsMoveWithinRange(targetPosition))
+                {                    
                     _context.selectedPawn.transform.position = targetPosition;
                 }
                 else
@@ -27,10 +22,7 @@ public class MovingPawn : SKState<BattleSystem>
                     _machine.changeState<Idle>();
                 }
 
-                if (_context.touchedPawns.Count == 5)
-                {
-                    _machine.changeState<ChangeSide>();
-                }
+                _machine.changeState<ChangeSide>();                
             }
 
             _context.sm.changeState<Idle>();
@@ -62,5 +54,16 @@ public class MovingPawn : SKState<BattleSystem>
         }
 
         return moveIsValid;
+    }
+
+    private bool IsMoveWithinRange(Vector3 targetPosition)
+    {
+        Unit unit = _context.selectedPawn.GetComponent<Unit>();
+        UnitProperties unitProperties = unit.unitProperties;
+        int moveRange = unitProperties.moveRange;
+        
+        //if (Mathf.Floor(targetPosition.x)
+
+        return true;
     }
 }

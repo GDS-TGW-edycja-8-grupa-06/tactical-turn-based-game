@@ -2,6 +2,7 @@
 using System.Collections;
 using Prime31.StateKit;
 using UnityEngine.Tilemaps;
+using System.Collections.Generic;
 
 public class MovingPawn : SKState<BattleSystem>
 {
@@ -20,6 +21,8 @@ public class MovingPawn : SKState<BattleSystem>
                 else
                 {
                     _machine.changeState<Idle>();
+
+                    return;
                 }
 
                 _machine.changeState<ChangeSide>();                
@@ -58,12 +61,30 @@ public class MovingPawn : SKState<BattleSystem>
 
     private bool IsMoveWithinRange(Vector3 targetPosition)
     {
+        List<Vector3> availablePostions = GetAvailablePositions(_context.selectedPawn);
+
+        if (availablePostions.Contains(targetPosition))
+        {
+            return true;
+        }
+        
+        return false;
+    }
+
+    private List<Vector3> GetAvailablePositions(GameObject pawn)
+    {
+        List<Vector3> availablePostions = new List<Vector3>();
+        Vector3 pawnPostion = pawn.transform.position;
         Unit unit = _context.selectedPawn.GetComponent<Unit>();
         UnitProperties unitProperties = unit.unitProperties;
         int moveRange = unitProperties.moveRange;
-        
-        //if (Mathf.Floor(targetPosition.x)
 
-        return true;
+        availablePostions.Add(new Vector3(pawnPostion.x + moveRange, pawnPostion.y));
+        availablePostions.Add(new Vector3(pawnPostion.x + -moveRange, pawnPostion.y));
+        availablePostions.Add(new Vector3(pawnPostion.x, pawnPostion.y + moveRange));
+        availablePostions.Add(new Vector3(pawnPostion.x, pawnPostion.y + -moveRange));
+        
+
+        return availablePostions;
     }
 }

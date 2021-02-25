@@ -5,7 +5,7 @@ using Prime31.StateKit;
 public class ShowingContextMenu : SKState<BattleSystem>
 {
     private Unit unit;
-
+    
     public override void update(float deltaTime)
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -18,9 +18,17 @@ public class ShowingContextMenu : SKState<BattleSystem>
     {
         base.begin();
 
-        //_machine.changeState<MovingPawn>();
         unit = _context.selectedPawn.GetComponent<Unit>();
 
         unit.ShowContextMenu();
+
+        ContextMenuHandler.OnMove += ContextMenuHandler_OnMove; 
+    }
+
+    private void ContextMenuHandler_OnMove(object sender, System.EventArgs e)
+    {
+        unit.HideContextMenu();
+
+        _context.sm.changeState<MovingPawn>();
     }
 }

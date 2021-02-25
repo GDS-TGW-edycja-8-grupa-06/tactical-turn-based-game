@@ -17,18 +17,16 @@ public class MovingPawn : SKState<BattleSystem>
                 if (IsMoveWithinRange(targetPosition))
                 {                    
                     _context.selectedPawn.transform.position = targetPosition;
+
+                    _context.selectedPawn.GetComponent<Unit>().HideContextMenu();
                 }
                 else
                 {
-                    _machine.changeState<Idle>();
-
                     return;
                 }
 
                 _machine.changeState<ChangeSide>();                
             }
-
-            _context.sm.changeState<Idle>();
         }
     }
 

@@ -11,6 +11,8 @@ public class ShowingContextMenu : SKState<BattleSystem>
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             unit.HideContextMenu();
+
+            _context.sm.changeState<Idle>();
         }
     }
 
@@ -27,7 +29,7 @@ public class ShowingContextMenu : SKState<BattleSystem>
 
     private void ContextMenuHandler_OnMove(object sender, System.EventArgs e)
     {
-        unit.HideContextMenu();
+        //unit.HideContextMenu();
 
         _context.sm.changeState<MovingPawn>();
     }

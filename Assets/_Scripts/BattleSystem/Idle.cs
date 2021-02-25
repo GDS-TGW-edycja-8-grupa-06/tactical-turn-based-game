@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
 using Prime31.StateKit;
-using System.Linq;
 
 public class Idle : SKState<BattleSystem>
 {
@@ -20,7 +18,9 @@ public class Idle : SKState<BattleSystem>
             {   
                 _context.selectedPawn = hit.collider.gameObject;
                                 
-                _context.sm.changeState<MovingPawn>();
+                //_context.sm.changeState<MovingPawn>();
+                _context.sm.changeState<ShowingContextMenu>();
+
             }
         }
     }

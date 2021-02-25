@@ -10,7 +10,26 @@ public class Unit : MonoBehaviour
     [SerializeField]
     public Side side;
 
+    [SerializeField]
+    public GameObject contextMenu;
 
+    private GameObject contextMenuInstance;
+
+    public void ShowContextMenu()
+    {
+        if (contextMenu != null)
+        {
+            contextMenuInstance = Instantiate(contextMenu, transform.position, Quaternion.identity, transform);
+        }
+    }
+
+    public void HideContextMenu()
+    {
+        if (contextMenuInstance != null)
+        {
+            Destroy(contextMenuInstance);
+        }
+    }
 }
 
 public enum Side

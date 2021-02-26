@@ -21,8 +21,9 @@ public class Unit : MonoBehaviour
     {
         if (contextMenu != null)
         {
+            Vector3 position = GetContextMenuPostion();
 
-            contextMenuInstance = Instantiate(contextMenu, transform.position, Quaternion.identity, transform);
+            contextMenuInstance = Instantiate(contextMenu, position, Quaternion.identity);
         }
     }
 
@@ -32,6 +33,15 @@ public class Unit : MonoBehaviour
         {
             Destroy(contextMenuInstance);
         }
+    }
+
+    private Vector3 GetContextMenuPostion()
+    {
+        Vector3 position = transform.position;
+
+        position.y = position.y == -7.0f ? -6.0f : position.y;
+
+        return transform.position;
     }
 }
 

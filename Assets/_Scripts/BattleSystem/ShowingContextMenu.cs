@@ -29,8 +29,13 @@ public class ShowingContextMenu : SKState<BattleSystem>
 
     private void ContextMenuHandler_OnMove(object sender, System.EventArgs e)
     {
-        //unit.HideContextMenu();
-
         _context.sm.changeState<MovingPawn>();
     }
+}
+
+public enum UnitAction
+{
+    Move,
+    Attack,
+    Both
 }

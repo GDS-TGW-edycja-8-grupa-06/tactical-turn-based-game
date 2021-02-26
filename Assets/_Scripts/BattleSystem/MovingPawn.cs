@@ -6,6 +6,8 @@ using System.Collections.Generic;
 
 public class MovingPawn : SKState<BattleSystem>
 {
+    Unit unit;
+
     public override void update(float deltaTime)
     {
         if (Input.GetMouseButtonDown(0))
@@ -18,13 +20,19 @@ public class MovingPawn : SKState<BattleSystem>
                 {                    
                     _context.selectedPawn.transform.position = targetPosition;
 
-                    _context.selectedPawn.GetComponent<Unit>().HideContextMenu();
+                    unit.HideContextMenu();
+
+                    if (unit.unitAction == UnitAction.Both)
+                    {
+                        unit.unitAction = UnitAction.Attack;
+                    }
                 }
                 else
                 {
                     return;
                 }
 
+                
                 _machine.changeState<ChangeSide>();                
             }
         }
@@ -73,7 +81,6 @@ public class MovingPawn : SKState<BattleSystem>
     {
         List<Vector3> availablePostions = new List<Vector3>();
         Vector3 pawnPostion = pawn.transform.position;
-        Unit unit = _context.selectedPawn.GetComponent<Unit>();
         UnitProperties unitProperties = unit.unitProperties;
         int moveRange = unitProperties.moveRange;
 
@@ -84,5 +91,12 @@ public class MovingPawn : SKState<BattleSystem>
         
 
         return availablePostions;
+    }
+
+    public override void begin()
+    {
+        base.begin();
+
+        unit = _context.selectedPawn.GetComponent<Unit>();
     }
 }

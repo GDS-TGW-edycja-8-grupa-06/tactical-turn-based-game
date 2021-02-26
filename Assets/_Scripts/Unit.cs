@@ -8,17 +8,20 @@ public class Unit : MonoBehaviour
     public UnitProperties unitProperties;
 
     [SerializeField]
-    public Side side;
+    public UnitSide side;
 
     [SerializeField]
     public GameObject contextMenu;
-
     private GameObject contextMenuInstance;
+
+    [HideInInspector]
+    public UnitAction unitAction;
 
     public void ShowContextMenu()
     {
         if (contextMenu != null)
         {
+
             contextMenuInstance = Instantiate(contextMenu, transform.position, Quaternion.identity, transform);
         }
     }
@@ -32,7 +35,7 @@ public class Unit : MonoBehaviour
     }
 }
 
-public enum Side
+public enum UnitSide
 {
     PlayerOne,
     PlayerTwo

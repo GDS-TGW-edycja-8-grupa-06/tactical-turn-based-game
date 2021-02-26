@@ -99,6 +99,7 @@ MonoBehaviour:
   side: 0
   contextMenu: {fileID: 3118020586155931357, guid: 19c3bae4b49f21d4c8f233c36cf51b0e,
     type: 3}
+  unitAction: 0
 --- !u!61 &1892418292773268636
 BoxCollider2D:
   m_ObjectHideFlags: 0

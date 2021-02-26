@@ -97,6 +97,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitProperties: {fileID: 11400000, guid: ff05ba6a75cb1e2409f8a95b19bd3ea0, type: 2}
   side: 0
+  contextMenu: {fileID: 3118020586155931357, guid: 19c3bae4b49f21d4c8f233c36cf51b0e,
+    type: 3}
 --- !u!61 &-4414925825389332824
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -17,10 +17,8 @@ public class Idle : SKState<BattleSystem>
             if (hit.collider != null)
             {   
                 _context.selectedPawn = hit.collider.gameObject;
-                                
-                //_context.sm.changeState<MovingPawn>();
+                
                 _context.sm.changeState<ShowingContextMenu>();
-
             }
         }
     }

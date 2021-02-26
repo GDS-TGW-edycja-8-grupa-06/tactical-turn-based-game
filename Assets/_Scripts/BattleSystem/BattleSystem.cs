@@ -36,11 +36,6 @@ public class BattleSystem : MonoBehaviour
     {
         sm.update(Time.deltaTime);
     }
-
-    void lol()
-    {
-        ;
-    }
 }
 
 public enum GamePhase

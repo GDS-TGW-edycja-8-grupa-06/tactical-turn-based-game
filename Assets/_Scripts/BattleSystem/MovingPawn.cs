@@ -32,7 +32,6 @@ public class MovingPawn : SKState<BattleSystem>
                     return;
                 }
 
-                
                 _machine.changeState<ChangeSide>();                
             }
         }

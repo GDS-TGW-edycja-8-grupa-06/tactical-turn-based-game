@@ -17,13 +17,13 @@ public class Idle : SKState<BattleSystem>
             if (hit.collider != null)
             {   
                 _context.selectedPawn = hit.collider.gameObject;
-
-                _context.sm.changeState<MovingCamera>();
-
-                return;
+            }
+            else
+            {
+                _context.cameraPosition = mousePosition;
             }
 
-            //_context.sm.changeState<MovingCamera>();
+            _context.sm.changeState<MovingCamera>();
         }
     }
 

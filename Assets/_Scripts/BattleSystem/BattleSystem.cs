@@ -23,7 +23,10 @@ public class BattleSystem : MonoBehaviour
 
     [HideInInspector]
     public GamePhase gamePhase = GamePhase.PlayerOne;
-    
+
+    [HideInInspector]
+    public Vector3 cameraPosition;
+
     private void Start()
     {
         sm = new SKStateMachine<BattleSystem>(this, new Idle());

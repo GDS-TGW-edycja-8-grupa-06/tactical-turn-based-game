@@ -30,6 +30,7 @@ public class BattleSystem : MonoBehaviour
         sm.addState(new MovingPawn());
         sm.addState(new ChangeSide());
         sm.addState(new ShowingContextMenu());
+        sm.addState(new MovingCamera());
     }
 
     void Update()

@@ -4,7 +4,7 @@ using Prime31.StateKit;
 using UnityEngine.Tilemaps;
 using System.Collections.Generic;
 
-public class MovingPawn : SKState<BattleSystem>
+public class MovingUnit : SKState<BattleSystem>
 {
     Unit unit;
 
@@ -18,7 +18,7 @@ public class MovingPawn : SKState<BattleSystem>
             {
                 if (IsMoveWithinRange(targetPosition))
                 {                    
-                    _context.selectedPawn.transform.position = targetPosition;
+                    _context.selectedUnit.transform.position = targetPosition;
 
                     unit.HideContextMenu();
 
@@ -66,7 +66,7 @@ public class MovingPawn : SKState<BattleSystem>
 
     private bool IsMoveWithinRange(Vector3 targetPosition)
     {
-        List<Vector3> availablePostions = GetAvailablePositions(_context.selectedPawn);
+        List<Vector3> availablePostions = GetAvailablePositions(_context.selectedUnit);
 
         if (availablePostions.Contains(targetPosition))
         {
@@ -96,6 +96,8 @@ public class MovingPawn : SKState<BattleSystem>
     {
         base.begin();
 
-        unit = _context.selectedPawn.GetComponent<Unit>();
+        unit = _context.selectedUnit.GetComponent<Unit>();
+
+        unit.CreateRangeOverlay(OverlayType.Move);
     }
 }

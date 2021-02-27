@@ -20,7 +20,7 @@ public class ShowingContextMenu : SKState<BattleSystem>
     {
         base.begin();
 
-        unit = _context.selectedPawn.GetComponent<Unit>();
+        unit = _context.selectedUnit.GetComponent<Unit>();
 
         unit.ShowContextMenu();
 
@@ -29,7 +29,7 @@ public class ShowingContextMenu : SKState<BattleSystem>
 
     private void ContextMenuHandler_OnMove(object sender, System.EventArgs e)
     {
-        _context.sm.changeState<MovingPawn>();
+        _context.sm.changeState<MovingUnit>();
     }
 }
 

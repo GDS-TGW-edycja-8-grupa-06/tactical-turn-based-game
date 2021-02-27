@@ -13,9 +13,9 @@ public class MovingCamera : SKState<BattleSystem>
 
         cameraPosition = Camera.main.transform.position;
 
-        if (_context.selectedPawn != null)
+        if (_context.selectedUnit != null)
         {
-            selectedPawn = _context.selectedPawn;
+            selectedPawn = _context.selectedUnit;
             moveToPosition = new Vector3(selectedPawn.transform.position.x, selectedPawn.transform.position.y, -2.5f);
         }
         else
@@ -30,7 +30,14 @@ public class MovingCamera : SKState<BattleSystem>
     {
         if (Input.GetMouseButtonDown(0))
         {
+            Vector3 cameraPositon = Camera.main.transform.position;
             moveToPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            float distance = Vector3.Distance(cameraPositon, moveToPosition);
+
+            if (distance < 5.0f)
+            {
+                moveToPosition = cameraPosition;
+            }
 
             moveToPosition.y = Mathf.Clamp(moveToPosition.y, -4.5f, -0.5f);
             moveToPosition.x = Mathf.Clamp(moveToPosition.x, -10f, 8f);
@@ -42,7 +49,7 @@ public class MovingCamera : SKState<BattleSystem>
         {
             Debug.Log("Camera moved...");
 
-            if (_context.selectedPawn != null)
+            if (_context.selectedUnit != null)
             {
                 _machine.changeState<ShowingContextMenu>();
             }

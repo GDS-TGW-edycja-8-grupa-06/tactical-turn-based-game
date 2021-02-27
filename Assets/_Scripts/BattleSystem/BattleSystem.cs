@@ -13,7 +13,7 @@ public class BattleSystem : MonoBehaviour
     public LayerMask walkableArea;
 
     [HideInInspector]
-    public GameObject selectedPawn;
+    public GameObject selectedUnit;
 
     [HideInInspector]
     public SKStateMachine<BattleSystem> sm;
@@ -30,7 +30,7 @@ public class BattleSystem : MonoBehaviour
     private void Start()
     {
         sm = new SKStateMachine<BattleSystem>(this, new Idle());
-        sm.addState(new MovingPawn());
+        sm.addState(new MovingUnit());
         sm.addState(new ChangeSide());
         sm.addState(new ShowingContextMenu());
         sm.addState(new MovingCamera());

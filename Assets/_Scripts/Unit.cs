@@ -28,6 +28,8 @@ public class Unit : MonoBehaviour
     [HideInInspector]
     public BattleSystem battleSystem;
 
+    private GameObject overlay;
+
     private void Start()
     {
         battleSystem = GameObject.Find("/BattleSystem").GetComponent<BattleSystem>();
@@ -36,6 +38,8 @@ public class Unit : MonoBehaviour
 
         sm.addState(new ShowingContextMenu());
         sm.addState(new ShowingRangeOverlay());
+
+        overlay = transform.Find("Overlay").gameObject;
     }
 
     public void ShowContextMenu()
@@ -67,25 +71,23 @@ public class Unit : MonoBehaviour
 
     public void CreateRangeOverlay(OverlayType overlayType)
     {
-        int range = overlayType == OverlayType.Move ? unitProperties.moveRange : unitProperties.attackRange;
-        GameObject overlay = transform.Find("Overlay").gameObject;
-
-        if (overlay == null)
+        if (IsOverlayAlreadeCreated())
         {
+            PostCreateOverlay();
+
             return;
         }
 
-        if (overlay.transform.childCount != 0)
-        {
-            overlay.SetActive(true);
-        }
-
+        int range = overlayType == OverlayType.Move ? unitProperties.moveRange : unitProperties.attackRange;
+        
         List<Vector3> overlayPositions = GetOverlayPositions(range);
 
         foreach (Vector3 position in overlayPositions)
         {
             Instantiate(overlayTilePrefab, overlay.transform.position + position, Quaternion.identity, overlay.transform);
         }
+
+        PostCreateOverlay();
 
         return;
     }
@@ -113,6 +115,51 @@ public class Unit : MonoBehaviour
         }
 
         return positions;
+    }
+
+    private void PostCreateOverlay()
+    {
+        for (int i = 0; i < overlay.transform.childCount; i++)
+        {
+            GameObject overlayChild = overlay.transform.GetChild(i).gameObject;
+
+            if (IsTileOccupied(overlayChild.transform.position))
+            {
+                overlayChild.SetActive(false);
+            }
+            else
+            {
+                overlayChild.SetActive(true);
+            }
+        }
+    }
+
+    private bool IsOverlayAlreadeCreated()
+    {
+        if (overlay == null || overlay.transform.childCount == 0)
+        {
+            return false;
+        }
+
+        overlay.SetActive(true);
+
+        return true;
+    }
+
+    private bool IsTileOccupied(Vector2 postion)
+    {
+        LayerMask playerLayerMask = battleSystem.gamePhase == GamePhase.PlayerOne ? battleSystem.playerOneLayerMask : battleSystem.playerTwoLayerMask;
+
+        RaycastHit2D hit = Physics2D.Raycast(postion, Vector2.zero, Mathf.Infinity, playerLayerMask);
+
+        if (hit.collider != null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
 

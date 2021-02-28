@@ -29,10 +29,9 @@ public class BattleSystem : MonoBehaviour
 
     private void Start()
     {
-        sm = new SKStateMachine<BattleSystem>(this, new Idle());
+        sm = new SKStateMachine<BattleSystem>(this, new BattleSystemIdle());
         sm.addState(new MovingUnit());
         sm.addState(new ChangeSide());
-        sm.addState(new ShowingContextMenu());
         sm.addState(new MovingCamera());
     }
 

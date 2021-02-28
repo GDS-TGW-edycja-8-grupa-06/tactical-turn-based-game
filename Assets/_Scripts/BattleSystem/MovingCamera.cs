@@ -5,8 +5,7 @@ public class MovingCamera : SKState<BattleSystem>
 {
     Vector3 cameraPosition;
     Vector3 moveToPosition;
-    GameObject selectedPawn;
-
+    
     public override void begin()
     {
         base.begin();
@@ -15,8 +14,7 @@ public class MovingCamera : SKState<BattleSystem>
 
         if (_context.selectedUnit != null)
         {
-            selectedPawn = _context.selectedUnit;
-            moveToPosition = new Vector3(selectedPawn.transform.position.x, selectedPawn.transform.position.y, -2.5f);
+            moveToPosition = new Vector3(_context.selectedUnit.transform.position.x, _context.selectedUnit.transform.position.y, -2.5f);
         }
         else
         {
@@ -51,11 +49,11 @@ public class MovingCamera : SKState<BattleSystem>
 
             if (_context.selectedUnit != null)
             {
-                _machine.changeState<ShowingContextMenu>();
+                _context.selectedUnit.GetComponent<Unit>().sm.changeState<ShowingContextMenu>();
             }
             else
             {
-                _machine.changeState<Idle>();
+                _machine.changeState<BattleSystemIdle>();
             }
         }
     }

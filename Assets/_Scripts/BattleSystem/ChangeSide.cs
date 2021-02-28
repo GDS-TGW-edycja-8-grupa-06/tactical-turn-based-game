@@ -19,6 +19,6 @@ public class ChangeSide : SKState<BattleSystem>
         _context.gamePhase = newPhase;
         _context.selectedUnit = null;
 
-        _machine.changeState<Idle>();
+        _machine.changeState<BattleSystemIdle>();
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections;
 using Prime31.StateKit;
 
-public class ShowingContextMenu : SKState<BattleSystem>
+public class ShowingContextMenu : SKState<Unit>
 {
     private Unit unit;
     
@@ -12,7 +12,7 @@ public class ShowingContextMenu : SKState<BattleSystem>
         {
             unit.HideContextMenu();
 
-            _context.sm.changeState<Idle>();
+            _context.battleSystem.GetComponent<BattleSystem>().sm.changeState<BattleSystemIdle>();
         }
     }
 
@@ -20,8 +20,8 @@ public class ShowingContextMenu : SKState<BattleSystem>
     {
         base.begin();
 
-        unit = _context.selectedUnit.GetComponent<Unit>();
-
+        unit = _context.GetComponent<Unit>();
+        
         unit.ShowContextMenu();
 
         ContextMenuHandler.OnMove += ContextMenuHandler_OnMove; 
@@ -29,7 +29,7 @@ public class ShowingContextMenu : SKState<BattleSystem>
 
     private void ContextMenuHandler_OnMove(object sender, System.EventArgs e)
     {
-        _context.sm.changeState<MovingUnit>();
+        _context.battleSystem.sm.changeState<MovingUnit>();
     }
 }
 

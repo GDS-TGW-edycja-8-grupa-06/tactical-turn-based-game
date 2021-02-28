@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Prime31.StateKit;
 
 public class Unit : MonoBehaviour
 {
@@ -18,8 +19,22 @@ public class Unit : MonoBehaviour
     public UnitAction unitAction;
 
     [SerializeField]
-    private GameObject overlayTilePrefab;
+    public GameObject overlayTilePrefab;
 
+    [HideInInspector]
+    public SKStateMachine<Unit> sm;
+
+    [HideInInspector]
+    public BattleSystem battleSystem;
+
+    private void Start()
+    {
+        battleSystem = GameObject.Find("/BattleSystem").GetComponent<BattleSystem>();
+
+        sm = new SKStateMachine<Unit>(this, new UnitIdle());
+
+        sm.addState(new ShowingContextMenu());
+    }
     public void ShowContextMenu()
     {
         if (contextMenu != null)
@@ -45,21 +60,6 @@ public class Unit : MonoBehaviour
         position.y = position.y == -7.0f ? -6.0f : position.y;
 
         return transform.position;
-    }
-
-    public void CreateRangeOverlay(OverlayType overlayType)
-    {
-        int range = overlayType == OverlayType.Move ? unitProperties.moveRange : unitProperties.attackRange;
-        GameObject overlay = transform.Find("Overlay").gameObject;
-        
-        if (overlay != null)
-        {
-            return;
-        }
-
-        Vector3 position = new Vector3(transform.position.x + 1, transform.position.y, transform.position.z);
-
-        GameObject overlayTile = Instantiate(overlayTilePrefab, position, Quaternion.identity, overlay.transform);
     }
 }
 

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Prime31.StateKit;
 
-public class Idle : SKState<BattleSystem>
+public class BattleSystemIdle : SKState<BattleSystem>
 {
     private LayerMask playerLayerMask;
  
@@ -18,7 +18,7 @@ public class Idle : SKState<BattleSystem>
             {   
                 _context.selectedUnit = hit.collider.gameObject;
 
-                _context.sm.changeState<ShowingContextMenu>();
+                _context.selectedUnit.GetComponent<Unit>().sm.changeState<ShowingContextMenu>();
             }
             else
             {

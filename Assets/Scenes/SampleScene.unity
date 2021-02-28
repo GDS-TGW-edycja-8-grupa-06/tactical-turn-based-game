@@ -17196,7 +17196,7 @@ MonoBehaviour:
   walkableArea:
     serializedVersion: 2
     m_Bits: 2048
-  selectedPawn: {fileID: 0}
+  selectedUnit: {fileID: 0}
   grid: {fileID: 249475830}
   gamePhase: 0
   cameraPosition: {x: 0, y: 0, z: 0}
@@ -17422,7 +17422,7 @@ PrefabInstance:
     - target: {fileID: 6208209811599276655, guid: 95d4edc003dbbb94c92c8160fd3b265f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95d4edc003dbbb94c92c8160fd3b265f, type: 3}
@@ -17462,7 +17462,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.03137255, g: 0.20784315, b: 0.21568629, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -17836,7 +17836,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -18693,7 +18693,7 @@ PrefabInstance:
     - target: {fileID: 6208209811599276655, guid: 95d4edc003dbbb94c92c8160fd3b265f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95d4edc003dbbb94c92c8160fd3b265f, type: 3}

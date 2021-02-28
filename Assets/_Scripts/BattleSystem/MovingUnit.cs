@@ -20,7 +20,7 @@ public class MovingUnit : SKState<BattleSystem>
                 {                    
                     _context.selectedUnit.transform.position = targetPosition;
 
-                    unit.HideContextMenu();
+                    unit.sm.changeState<UnitIdle>();
 
                     if (unit.unitAction == UnitAction.Both)
                     {
@@ -88,7 +88,6 @@ public class MovingUnit : SKState<BattleSystem>
         availablePostions.Add(new Vector3(pawnPostion.x, pawnPostion.y + moveRange));
         availablePostions.Add(new Vector3(pawnPostion.x, pawnPostion.y + -moveRange));
         
-
         return availablePostions;
     }
 
@@ -98,7 +97,6 @@ public class MovingUnit : SKState<BattleSystem>
 
         unit = _context.selectedUnit.GetComponent<Unit>();
 
-        unit.sm.changeState<ShowingRangeOverlay>();
-        //unit.CreateRangeOverlay(OverlayType.Move);
+        unit.sm.changeState<ShowingRangeOverlay>();;
     }
 }

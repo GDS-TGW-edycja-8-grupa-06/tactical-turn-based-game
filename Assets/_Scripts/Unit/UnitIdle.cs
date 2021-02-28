@@ -7,4 +7,11 @@ public class UnitIdle : SKState<Unit>
     {
         throw new System.NotImplementedException();
     }
+
+    public override void begin()
+    {
+        base.begin();
+
+        _context.HideContextMenu();
+    }
 }

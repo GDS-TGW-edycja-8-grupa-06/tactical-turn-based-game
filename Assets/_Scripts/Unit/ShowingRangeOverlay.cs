@@ -21,6 +21,10 @@ public class ShowingRangeOverlay : SKState<Unit>
 
     public override void update(float deltaTime)
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            _context.sm.changeState<UnitIdle>();
+        }
         return;
     }
 }

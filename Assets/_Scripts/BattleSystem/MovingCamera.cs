@@ -26,20 +26,8 @@ public class MovingCamera : SKState<BattleSystem>
 
     public override void update(float deltaTime)
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector3 cameraPositon = Camera.main.transform.position;
-            moveToPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            float distance = Vector3.Distance(cameraPositon, moveToPosition);
-
-            if (distance < 5.0f)
-            {
-                moveToPosition = cameraPosition;
-            }
-
-            moveToPosition.y = Mathf.Clamp(moveToPosition.y, -4.5f, -0.5f);
-            moveToPosition.x = Mathf.Clamp(moveToPosition.x, -10f, 8f);
-        }
+        moveToPosition.y = Mathf.Clamp(moveToPosition.y, -4.5f, -0.5f);
+        moveToPosition.x = Mathf.Clamp(moveToPosition.x, -10f, 8f);
 
         Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, moveToPosition, 0.25f);
 

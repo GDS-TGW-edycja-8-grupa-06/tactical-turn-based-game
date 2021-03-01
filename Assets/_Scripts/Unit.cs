@@ -161,6 +161,11 @@ public class Unit : MonoBehaviour
             return false;
         }
     }
+
+    private void Update()
+    {
+        sm.update(Time.deltaTime);
+    }
 }
 
 public enum UnitSide

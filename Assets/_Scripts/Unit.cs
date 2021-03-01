@@ -37,7 +37,6 @@ public class Unit : MonoBehaviour
         sm = new SKStateMachine<Unit>(this, new UnitIdle());
 
         sm.addState(new ShowingContextMenu());
-        sm.addState(new ShowingRangeOverlay());
 
         overlay = transform.Find("Overlay").gameObject;
     }
@@ -148,7 +147,7 @@ public class Unit : MonoBehaviour
 
     private bool IsTileOccupied(Vector2 postion)
     {
-        LayerMask playerLayerMask = battleSystem.gamePhase == GamePhase.PlayerOne ? battleSystem.playerOneLayerMask : battleSystem.playerTwoLayerMask;
+        LayerMask playerLayerMask = battleSystem.playerOneLayerMask | battleSystem.playerTwoLayerMask;
 
         RaycastHit2D hit = Physics2D.Raycast(postion, Vector2.zero, Mathf.Infinity, playerLayerMask);
 

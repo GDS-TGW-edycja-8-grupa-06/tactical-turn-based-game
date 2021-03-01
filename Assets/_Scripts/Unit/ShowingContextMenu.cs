@@ -9,9 +9,10 @@ public class ShowingContextMenu : SKState<Unit>
     public override void update(float deltaTime)
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            unit.HideContextMenu();
+        {           
+            _context.HideContextMenu();
 
+            _context.sm.changeState<UnitIdle>();
             _context.battleSystem.GetComponent<BattleSystem>().sm.changeState<BattleSystemIdle>();
         }
     }
@@ -31,6 +32,8 @@ public class ShowingContextMenu : SKState<Unit>
     {
         _context.battleSystem.sm.changeState<MovingUnit>();
     }
+
+
 }
 
 public enum UnitAction

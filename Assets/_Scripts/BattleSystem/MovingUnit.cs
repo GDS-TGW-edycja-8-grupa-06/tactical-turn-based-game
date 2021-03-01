@@ -97,6 +97,14 @@ public class MovingUnit : SKState<BattleSystem>
 
         unit = _context.selectedUnit.GetComponent<Unit>();
 
-        unit.sm.changeState<ShowingRangeOverlay>();;
+        unit.CreateRangeOverlay(OverlayType.Move);
+    }
+
+    public override void end()
+    {
+        base.end();
+
+        unit.HideRangeOverlay();
+        unit.HideContextMenu();
     }
 }

@@ -21,4 +21,7 @@ public class UnitProperties : ScriptableObject
 
     [SerializeField]
     public Sprite[] sprites;
+
+    [HideInInspector]
+    public int damageMultiplier = 1;
 }

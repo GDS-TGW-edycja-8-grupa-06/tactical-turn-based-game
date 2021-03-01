@@ -37,6 +37,7 @@ public class Unit : MonoBehaviour
         sm = new SKStateMachine<Unit>(this, new UnitIdle());
 
         sm.addState(new ShowingContextMenu());
+        sm.addState(new UnitTakeDamage());
 
         overlay = transform.Find("Overlay").gameObject;
     }

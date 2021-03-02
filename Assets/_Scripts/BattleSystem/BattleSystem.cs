@@ -27,12 +27,14 @@ public class BattleSystem : MonoBehaviour
     [HideInInspector]
     public Vector3 cameraPosition;
 
+    [SerializeField]
+    public GameObject cameraFocus;
+
     private void Start()
     {
         sm = new SKStateMachine<BattleSystem>(this, new BattleSystemIdle());
         sm.addState(new MovingUnit());
         sm.addState(new ChangeSide());
-        sm.addState(new MovingCamera());
         sm.addState(new BattleSystemEnteringWinnigArea());
     }
 

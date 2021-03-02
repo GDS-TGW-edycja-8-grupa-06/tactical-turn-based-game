@@ -12,6 +12,8 @@ public class BattleSystemIdle : SKState<BattleSystem>
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 mousePosition2D = new Vector2(mousePosition.x, mousePosition.y);
 
+            _context.cameraFocus.transform.position = mousePosition;
+
             RaycastHit2D hit = Physics2D.Raycast(mousePosition2D, Vector2.zero, Mathf.Infinity, playerLayerMask);
 
             if (hit.collider != null)
@@ -24,7 +26,7 @@ public class BattleSystemIdle : SKState<BattleSystem>
             {
                 _context.cameraPosition = mousePosition;
 
-                _context.sm.changeState<MovingCamera>();
+                //_context.sm.changeState<MovingCamera>();
             }
         }
     }

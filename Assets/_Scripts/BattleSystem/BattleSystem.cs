@@ -33,6 +33,7 @@ public class BattleSystem : MonoBehaviour
         sm.addState(new MovingUnit());
         sm.addState(new ChangeSide());
         sm.addState(new MovingCamera());
+        sm.addState(new BattleSystemEnteringWinnigArea());
     }
 
     void Update()

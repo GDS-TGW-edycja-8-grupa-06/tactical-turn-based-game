@@ -23,5 +23,5 @@ public class UnitProperties : ScriptableObject
     public Sprite[] sprites;
 
     [HideInInspector]
-    public int damageMultiplier = 1;
+    public float damageMultiplier = 1.0f;
 }

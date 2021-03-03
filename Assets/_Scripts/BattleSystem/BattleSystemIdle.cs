@@ -25,8 +25,6 @@ public class BattleSystemIdle : SKState<BattleSystem>
             else
             {
                 _context.cameraPosition = mousePosition;
-
-                //_context.sm.changeState<MovingCamera>();
             }
         }
     }

@@ -11,6 +11,8 @@ class BattleSystemEnteringWinnigArea : SKState<BattleSystem>
     public override void begin()
     {
         base.begin();
+
+        _context.sm.changeState<BattleSystemIdle>();
     }
 
     public override void end()

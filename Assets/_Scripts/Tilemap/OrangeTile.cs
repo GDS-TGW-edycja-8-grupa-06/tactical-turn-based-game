@@ -11,6 +11,7 @@ public class OrangeTile : MonoBehaviour
         if (collision.gameObject.TryGetComponent<Unit>(out unit))
         {
             unit.battleSystem.sm.changeState<BattleSystemEnteringWinnigArea>();
+            unit.sm.changeState<UnitIdle>();
         };
     }
 }

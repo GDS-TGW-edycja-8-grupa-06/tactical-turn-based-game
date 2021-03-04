@@ -11,9 +11,9 @@ namespace Bodzio2k.Unit
 
             float damageMultiplier = 0.0f;
 
-            damageMultiplier = _context.unitProperties.damageMultiplier == 1.0f ? 0.5f : 1.0f;
+            damageMultiplier = _context.properties.damageMultiplier == 1.0f ? 0.5f : 1.0f;
 
-            _context.unitProperties.damageMultiplier = damageMultiplier;
+            _context.properties.damageMultiplier = damageMultiplier;
 
             _context.sm.changeState<Idle>();
         }

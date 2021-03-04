@@ -9,7 +9,7 @@ namespace Bodzio2k.Unit
     public class Unit : MonoBehaviour
     {
         [SerializeField]
-        public UnitProperties unitProperties;
+        public Properties properties;
 
         [SerializeField]
         public Side side;
@@ -19,7 +19,7 @@ namespace Bodzio2k.Unit
         private GameObject contextMenuInstance;
 
         [HideInInspector]
-        public UnitAction unitAction;
+        public Action action;
 
         [SerializeField]
         public GameObject overlayTilePrefab;
@@ -46,7 +46,7 @@ namespace Bodzio2k.Unit
 
             overlay = transform.Find("Overlay").gameObject;
 
-            canStepOntoBlueTiles = Array.Exists(unitProperties.tags, tag => tag == Tag.CanStepOntoBlueTiles);
+            canStepOntoBlueTiles = Array.Exists(properties.tags, tag => tag == Tag.CanStepOntoBlueTiles);
 
             return;
         }
@@ -87,7 +87,7 @@ namespace Bodzio2k.Unit
                 return;
             }
 
-            int range = overlayType == OverlayType.Move ? unitProperties.moveRange : unitProperties.attackRange;
+            int range = overlayType == OverlayType.Move ? properties.moveRange : properties.attackRange;
         
             List<Vector3> overlayPositions = GetOverlayPositions(range);
 

@@ -38,11 +38,4 @@ namespace Bodzio2k.Unit
 
 
     }
-
-    public enum UnitAction
-    {
-        Move,
-        Attack,
-        Both
-    }
 }

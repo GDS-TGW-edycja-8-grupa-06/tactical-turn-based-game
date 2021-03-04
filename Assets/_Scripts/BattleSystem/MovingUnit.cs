@@ -3,12 +3,14 @@ using Prime31.StateKit;
 using UnityEngine.Tilemaps;
 using System.Collections.Generic;
 using Bodzio2k.Unit;
+using System;
 
 namespace Bodzio2k.BattleSystem
 {
     public class MovingUnit : SKState<BattleSystem>
     {
-        Unit.Unit unit;
+        private Unit.Unit unit;
+        private bool canStepOntoBlueTiles = false;
 
         public override void update(float deltaTime)
         {
@@ -24,9 +26,9 @@ namespace Bodzio2k.BattleSystem
 
                         unit.sm.changeState<Unit.Idle>();
 
-                        if (unit.unitAction == UnitAction.Both)
+                        if (unit.action == Bodzio2k.Unit.Action.Both)
                         {
-                            unit.unitAction = UnitAction.Attack;
+                            unit.action = Bodzio2k.Unit.Action.Attack;
                         }
                     }
                     else
@@ -49,7 +51,7 @@ namespace Bodzio2k.BattleSystem
 
             Tile tile = _context.grid.GetTile<Tile>(tilemapPosition);
             LayerMask restrictedAreaMask = _context.restrictedArea;
-
+            
             RaycastHit2D hit = Physics2D.Raycast(mousePosition2D, Vector2.zero, Mathf.Infinity, restrictedAreaMask);
 
             if (hit.collider == null)
@@ -82,7 +84,7 @@ namespace Bodzio2k.BattleSystem
         {
             List<Vector3> availablePostions = new List<Vector3>();
             Vector3 pawnPostion = pawn.transform.position;
-            UnitProperties unitProperties = unit.unitProperties;
+            Properties unitProperties = unit.properties;
             int moveRange = unitProperties.moveRange;
 
             availablePostions.Add(new Vector3(pawnPostion.x + moveRange, pawnPostion.y));
@@ -98,6 +100,8 @@ namespace Bodzio2k.BattleSystem
             base.begin();
 
             unit = _context.selectedUnit.GetComponent<Unit.Unit>();
+
+            canStepOntoBlueTiles = Array.Exists(unit.properties.tags, tag => tag == Tag.CanStepOntoBlueTiles);
 
             unit.CreateRangeOverlay(OverlayType.Move);
         }

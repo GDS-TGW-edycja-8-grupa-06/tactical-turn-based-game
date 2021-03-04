@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using Bodzio2k.Unit;
 
-[CreateAssetMenu(fileName = "UnitName", menuName = "UnitProperties")]
-public class UnitProperties : ScriptableObject
+[CreateAssetMenu(fileName = "UnitName", menuName = "Unit Properties")]
+public class Properties : ScriptableObject
 {
     [SerializeField]
     public int health = 100;

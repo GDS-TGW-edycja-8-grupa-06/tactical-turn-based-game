@@ -126,11 +126,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd749d47b967dc42b68eb64f0f93a57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitProperties: {fileID: 11400000, guid: 351b81adaf904624295ce786d3e3fa18, type: 2}
+  properties: {fileID: 11400000, guid: 351b81adaf904624295ce786d3e3fa18, type: 2}
   side: 0
   contextMenu: {fileID: 3118020586155931357, guid: 19c3bae4b49f21d4c8f233c36cf51b0e,
     type: 3}
-  unitAction: 0
+  action: 0
   overlayTilePrefab: {fileID: 6544647781196717240, guid: 82fbe1011d4a76d449674a9e7aee2411,
     type: 3}
   battleSystem: {fileID: 0}

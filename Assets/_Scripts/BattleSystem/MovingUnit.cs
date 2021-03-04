@@ -52,6 +52,11 @@ namespace Bodzio2k.BattleSystem
             Tile tile = _context.grid.GetTile<Tile>(tilemapPosition);
             LayerMask restrictedAreaMask = _context.restrictedArea;
             
+            if (!canStepOntoBlueTiles)
+            {
+                restrictedAreaMask = restrictedAreaMask | _context.blueTiles;
+            }
+
             RaycastHit2D hit = Physics2D.Raycast(mousePosition2D, Vector2.zero, Mathf.Infinity, restrictedAreaMask);
 
             if (hit.collider == null)

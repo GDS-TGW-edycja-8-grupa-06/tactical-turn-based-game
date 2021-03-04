@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
+using Bodzio2k.Unit;
 
 [CreateAssetMenu(fileName = "UnitName", menuName = "UnitProperties")]
 public class UnitProperties : ScriptableObject

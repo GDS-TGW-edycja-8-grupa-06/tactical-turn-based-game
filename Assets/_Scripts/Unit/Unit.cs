@@ -12,7 +12,7 @@ namespace Bodzio2k.Unit
         public UnitProperties unitProperties;
 
         [SerializeField]
-        public UnitSide side;
+        public Side side;
 
         [SerializeField]
         public GameObject contextMenu;
@@ -181,15 +181,4 @@ namespace Bodzio2k.Unit
             sm.update(Time.deltaTime);
         }
 }
-}
-public enum UnitSide
-{
-    PlayerOne,
-    PlayerTwo
-}
-
-public enum OverlayType
-{
-    Move,
-    Attack
 }

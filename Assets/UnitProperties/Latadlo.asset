@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Latadlo
   m_EditorClassIdentifier: 
   health: 100
-  tags: 
+  tags: 00000000
   damageDealt: 0
   moveRange: 2
   attackRange: 1
   sprites: []
+  damageMultiplier: 1

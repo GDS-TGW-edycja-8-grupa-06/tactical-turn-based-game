@@ -2,23 +2,26 @@
 using System.Collections;
 using Prime31.StateKit;
 
-public class ChangeSide : SKState<BattleSystem>
+namespace Bodzio2k.BattleSystem
 {
-    public override void update(float deltaTime)
+    public class ChangeSide : SKState<BattleSystem>
     {
-        return;
-    }
+        public override void update(float deltaTime)
+        {
+            return;
+        }
 
-    public override void begin()
-    {
-        base.begin();
-        
-        GamePhase currentPhase = _context.gamePhase;
-        GamePhase newPhase = currentPhase == GamePhase.PlayerOne ? GamePhase.PlayerTwo : GamePhase.PlayerOne;
+        public override void begin()
+        {
+            base.begin();
 
-        _context.gamePhase = newPhase;
-        _context.selectedUnit = null;
+            GamePhase currentPhase = _context.gamePhase;
+            GamePhase newPhase = currentPhase == GamePhase.PlayerOne ? GamePhase.PlayerTwo : GamePhase.PlayerOne;
 
-        _machine.changeState<BattleSystemIdle>();
+            _context.gamePhase = newPhase;
+            _context.selectedUnit = null;
+
+            _machine.changeState<Idle>();
+        }
     }
 }

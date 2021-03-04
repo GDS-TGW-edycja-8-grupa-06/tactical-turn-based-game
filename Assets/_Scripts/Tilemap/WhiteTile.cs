@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using Bodzio2k.Unit;
 
 public class WhiteTile : MonoBehaviour
 {
@@ -15,7 +14,7 @@ public class WhiteTile : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<Unit>(out unit))
         {
-            unit.sm.changeState<UnitChangeDamageMultiplier>();
+            unit.sm.changeState<ChangeDamageMultiplier>();
         };
     }
 
@@ -23,7 +22,7 @@ public class WhiteTile : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<Unit>(out unit))
         {
-            unit.sm.changeState<UnitChangeDamageMultiplier>();
+            unit.sm.changeState<ChangeDamageMultiplier>();
         };
     }
 }

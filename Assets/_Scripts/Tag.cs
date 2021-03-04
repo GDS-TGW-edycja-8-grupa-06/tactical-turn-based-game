@@ -1,6 +1,6 @@
 ﻿public enum Tag
 {
-    Tag01,
+    CanStepOntoBlueTiles,
     Tag02,
     Tag03,
     Tag04

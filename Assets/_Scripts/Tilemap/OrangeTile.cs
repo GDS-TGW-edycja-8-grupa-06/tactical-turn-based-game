@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using Bodzio2k.BattleSystem;
+using Bodzio2k.Unit;
 
 public class OrangeTile : MonoBehaviour
 {
@@ -10,8 +10,8 @@ public class OrangeTile : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<Unit>(out unit))
         {
-            unit.battleSystem.sm.changeState<BattleSystemEnteringWinnigArea>();
-            unit.sm.changeState<UnitIdle>();
+            unit.battleSystem.sm.changeState<EnteringWinnigArea>();
+            //unit.sm.changeState<Unit.Idle>();
         };
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Prime31.StateKit;
+using Bodzio2k.Unit;
 
-internal class UnitChangeDamageMultiplier : SKState<Unit>
+internal class ChangeDamageMultiplier : SKState<Unit>
 {
     public override void begin()
     {
@@ -12,7 +13,7 @@ internal class UnitChangeDamageMultiplier : SKState<Unit>
 
         _context.unitProperties.damageMultiplier = damageMultiplier;
 
-        _context.sm.changeState<UnitIdle>();
+        _context.sm.changeState<Idle>();
     }
 
     public override void end()

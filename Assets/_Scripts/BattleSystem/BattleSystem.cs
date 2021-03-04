@@ -4,48 +4,52 @@ using UnityEngine;
 using Prime31.StateKit;
 using UnityEngine.Tilemaps;
 
-public class BattleSystem : MonoBehaviour
+namespace Bodzio2k.BattleSystem
 {
-    [SerializeField]
-    public LayerMask playerOneLayerMask;
-    public LayerMask playerTwoLayerMask;
-    public LayerMask restrictedArea;
-    public LayerMask walkableArea;
-
-    [HideInInspector]
-    public GameObject selectedUnit;
-
-    [HideInInspector]
-    public SKStateMachine<BattleSystem> sm;
-
-    [SerializeField]
-    public Tilemap grid;
-
-    [HideInInspector]
-    public GamePhase gamePhase = GamePhase.PlayerOne;
-
-    [HideInInspector]
-    public Vector3 cameraPosition;
-
-    [SerializeField]
-    public GameObject cameraFocus;
-
-    private void Start()
+    public class BattleSystem : MonoBehaviour
     {
-        sm = new SKStateMachine<BattleSystem>(this, new BattleSystemIdle());
-        sm.addState(new MovingUnit());
-        sm.addState(new ChangeSide());
-        sm.addState(new BattleSystemEnteringWinnigArea());
+        [SerializeField]
+        public LayerMask playerOneLayerMask;
+        public LayerMask playerTwoLayerMask;
+        public LayerMask restrictedArea;
+        public LayerMask walkableArea;
+        public LayerMask blueTiles;
+
+        [HideInInspector]
+        public GameObject selectedUnit;
+
+        [HideInInspector]
+        public SKStateMachine<BattleSystem> sm;
+
+        [SerializeField]
+        public Tilemap grid;
+
+        [HideInInspector]
+        public GamePhase gamePhase = GamePhase.PlayerOne;
+
+        [HideInInspector]
+        public Vector3 cameraPosition;
+
+        [SerializeField]
+        public GameObject cameraFocus;
+
+        private void Start()
+        {
+            sm = new SKStateMachine<BattleSystem>(this, new Idle());
+            sm.addState(new MovingUnit());
+            sm.addState(new ChangeSide());
+            sm.addState(new EnteringWinnigArea());
+        }
+
+        void Update()
+        {
+            sm.update(Time.deltaTime);
+        }
     }
 
-    void Update()
+    public enum GamePhase
     {
-        sm.update(Time.deltaTime);
+        PlayerOne,
+        PlayerTwo
     }
-}
-
-public enum GamePhase
-{
-    PlayerOne,
-    PlayerTwo
 }

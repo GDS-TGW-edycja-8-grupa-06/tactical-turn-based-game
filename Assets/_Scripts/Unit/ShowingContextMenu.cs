@@ -29,6 +29,12 @@ namespace Bodzio2k.Unit
             unit.ShowContextMenu();
 
             ContextMenuHandler.OnMove += ContextMenuHandler_OnMove;
+            ContextMenuHandler.OnAttack += ContextMenuHandler_OnAttack;
+        }
+
+        private void ContextMenuHandler_OnAttack(object sender, System.EventArgs e)
+        {
+            _context.battleSystem.sm.changeState<Aiming>();
         }
 
         private void ContextMenuHandler_OnMove(object sender, System.EventArgs e)
@@ -36,6 +42,6 @@ namespace Bodzio2k.Unit
             _context.battleSystem.sm.changeState<MovingUnit>();
         }
 
-
+        
     }
 }

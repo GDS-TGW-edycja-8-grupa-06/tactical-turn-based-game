@@ -39,17 +39,12 @@ namespace Bodzio2k.BattleSystem
             sm.addState(new MovingUnit());
             sm.addState(new ChangeSide());
             sm.addState(new EnteringWinnigArea());
+            sm.addState(new Aiming());
         }
 
         void Update()
         {
             sm.update(Time.deltaTime);
         }
-    }
-
-    public enum GamePhase
-    {
-        PlayerOne,
-        PlayerTwo
     }
 }

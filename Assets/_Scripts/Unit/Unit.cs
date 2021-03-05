@@ -31,6 +31,8 @@ namespace Bodzio2k.Unit
         public BattleSystem.BattleSystem battleSystem;
 
         private GameObject overlay;
+        private Sprite moveRangeSpriteOverlay;
+        private Sprite attackRangeSpriteOverlay;
 
         private bool canStepOntoBlueTiles = false;
 
@@ -47,6 +49,8 @@ namespace Bodzio2k.Unit
             overlay = transform.Find("Overlay").gameObject;
 
             canStepOntoBlueTiles = Array.Exists(properties.tags, tag => tag == Tag.CanStepOntoBlueTiles);
+
+            LoadSprites();
 
             return;
         }
@@ -93,12 +97,20 @@ namespace Bodzio2k.Unit
 
             foreach (Vector3 position in overlayPositions)
             {
-                Instantiate(overlayTilePrefab, overlay.transform.position + position, Quaternion.identity, overlay.transform);
+                InstantiateOverlayTile(position, overlayType);
             }
 
             PostCreateOverlay();
 
             return;
+        }
+
+        private void InstantiateOverlayTile(Vector3 position, OverlayType overlayType)
+        {
+            Sprite sprite = overlayType == OverlayType.Move ? moveRangeSpriteOverlay : attackRangeSpriteOverlay;
+
+            GameObject go = Instantiate(overlayTilePrefab, overlay.transform.position + position, Quaternion.identity, overlay.transform);
+            go.GetComponent<SpriteRenderer>().sprite = sprite;
         }
 
         public void HideRangeOverlay()
@@ -179,6 +191,12 @@ namespace Bodzio2k.Unit
         private void Update()
         {
             sm.update(Time.deltaTime);
+        }
+
+        private void LoadSprites()
+        {
+            moveRangeSpriteOverlay = Resources.Load<Sprite>("MovingRangeOverlay");
+            attackRangeSpriteOverlay = Resources.Load<Sprite>("AimingRangeOverlay");
         }
 }
 }

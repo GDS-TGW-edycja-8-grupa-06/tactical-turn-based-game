@@ -10,7 +10,6 @@ namespace Bodzio2k.BattleSystem
     public class Aiming : SKState<BattleSystem>
     {
         private Unit.Unit unit;
-        private bool canStepOntoBlueTiles = false;
 
         public override void update(float deltaTime)
         {
@@ -52,10 +51,10 @@ namespace Bodzio2k.BattleSystem
             Tile tile = _context.grid.GetTile<Tile>(tilemapPosition);
             LayerMask restrictedAreaMask = _context.restrictedArea;
             
-            if (!canStepOntoBlueTiles)
-            {
-                restrictedAreaMask = restrictedAreaMask | _context.blueTiles;
-            }
+            //if (!canStepOntoBlueTiles)
+            //{
+            //    restrictedAreaMask = restrictedAreaMask | _context.blueTiles;
+            //}
 
             RaycastHit2D hit = Physics2D.Raycast(mousePosition2D, Vector2.zero, Mathf.Infinity, restrictedAreaMask);
 
@@ -90,12 +89,12 @@ namespace Bodzio2k.BattleSystem
             List<Vector3> availablePostions = new List<Vector3>();
             Vector3 pawnPostion = pawn.transform.position;
             Properties unitProperties = unit.properties;
-            int moveRange = unitProperties.moveRange;
+            int attackRange = unitProperties.attackRange;
 
-            availablePostions.Add(new Vector3(pawnPostion.x + moveRange, pawnPostion.y));
-            availablePostions.Add(new Vector3(pawnPostion.x + -moveRange, pawnPostion.y));
-            availablePostions.Add(new Vector3(pawnPostion.x, pawnPostion.y + moveRange));
-            availablePostions.Add(new Vector3(pawnPostion.x, pawnPostion.y + -moveRange));
+            availablePostions.Add(new Vector3(pawnPostion.x + attackRange, pawnPostion.y));
+            availablePostions.Add(new Vector3(pawnPostion.x + -attackRange, pawnPostion.y));
+            availablePostions.Add(new Vector3(pawnPostion.x, pawnPostion.y + attackRange));
+            availablePostions.Add(new Vector3(pawnPostion.x, pawnPostion.y + -attackRange));
 
             return availablePostions;
         }
@@ -106,9 +105,9 @@ namespace Bodzio2k.BattleSystem
 
             unit = _context.selectedUnit.GetComponent<Unit.Unit>();
 
-            canStepOntoBlueTiles = Array.Exists(unit.properties.tags, tag => tag == Tag.CanStepOntoBlueTiles);
+            //canStepOntoBlueTiles = Array.Exists(unit.properties.tags, tag => tag == Tag.CanStepOntoBlueTiles);
 
-            unit.CreateRangeOverlay(OverlayType.Move);
+            unit.CreateRangeOverlay(OverlayType.Attack);
         }
 
         public override void end()

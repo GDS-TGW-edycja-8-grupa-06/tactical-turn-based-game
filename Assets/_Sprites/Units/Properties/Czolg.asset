@@ -16,5 +16,6 @@ MonoBehaviour:
   tags: 
   damageDealt: 0
   moveRange: 1
-  attackRange: 1
+  attackRange: 4
   sprites: []
+  damageMultiplier: 1

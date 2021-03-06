@@ -84,12 +84,12 @@ namespace Bodzio2k.Unit
 
         public void CreateRangeOverlay(OverlayType overlayType)
         {
-            if (IsOverlayAlreadeCreated())
-            {
-                PostCreateOverlay();
+            //if (IsOverlayAlreadyCreated())
+            //{
+            //    PostCreateOverlay();
 
-                return;
-            }
+            //    return;
+            //}
 
             int range = overlayType == OverlayType.Move ? properties.moveRange : properties.attackRange;
         
@@ -117,7 +117,10 @@ namespace Bodzio2k.Unit
         {
             GameObject overlay = transform.Find("Overlay").gameObject;
 
-            overlay.SetActive(false);
+            for (int i = 0; i < overlay.transform.childCount; i++)
+            {
+                Destroy(overlay.transform.GetChild(i).gameObject);
+            }
         }
 
         private List<Vector3> GetOverlayPositions(int range)
@@ -155,17 +158,17 @@ namespace Bodzio2k.Unit
             }
         }
 
-        private bool IsOverlayAlreadeCreated()
-        {
-            if (overlay == null || overlay.transform.childCount == 0)
-            {
-                return false;
-            }
+        //private bool IsOverlayAlreadyCreated()
+        //{
+        //    if (overlay == null || overlay.transform.childCount == 0)
+        //    {
+        //        return false;
+        //    }
 
-            overlay.SetActive(true);
+        //    overlay.SetActive(true);
 
-            return true;
-        }
+        //    return true;
+        //}
 
         private bool IsTileOccupied(Vector2 postion)
         {

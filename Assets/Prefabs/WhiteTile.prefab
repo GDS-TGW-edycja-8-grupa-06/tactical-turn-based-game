@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1698902199164413302}
   - component: {fileID: 1698902199164413297}
   - component: {fileID: 1698902199164413298}
+  - component: {fileID: 8189546469975152423}
   m_Layer: 0
   m_Name: WhiteTile
   m_TagString: Object
@@ -143,3 +144,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8189546469975152423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698902199164413301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58a0cd989533c2541b4c5744394119b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: ead83974ec13fc04492a0137e2eefa2b, type: 3}
+  - {fileID: 21300000, guid: f057a29af91b86345941b4578019dec9, type: 3}

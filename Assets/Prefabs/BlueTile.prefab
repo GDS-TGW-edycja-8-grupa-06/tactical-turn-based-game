@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3714442930213519588}
   - component: {fileID: 3714442930213519589}
+  - component: {fileID: 8705623888688409750}
   m_Layer: 12
   m_Name: Trumna_Dol
   m_TagString: Untagged
@@ -81,6 +82,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8705623888688409750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3714442930213519587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58a0cd989533c2541b4c5744394119b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: ccbf8148669821344a2641e24f4170e5, type: 3}
+  - {fileID: 21300000, guid: 7bdfa0c82a412014d8dd3bb7c17ff7a7, type: 3}
 --- !u!1 &3714442930233633361
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,6 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3714442930233633362}
   - component: {fileID: 3714442930233633363}
+  - component: {fileID: 4236659600560414524}
   m_Layer: 12
   m_Name: Trumna_Gora
   m_TagString: Untagged
@@ -162,6 +179,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4236659600560414524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3714442930233633361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58a0cd989533c2541b4c5744394119b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: ccbf8148669821344a2641e24f4170e5, type: 3}
+  - {fileID: 21300000, guid: 281f6a91f20d53d4592497e169155962, type: 3}
 --- !u!1 &3714442930578966134
 GameObject:
   m_ObjectHideFlags: 0

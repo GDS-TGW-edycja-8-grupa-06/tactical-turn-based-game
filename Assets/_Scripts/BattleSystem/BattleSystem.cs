@@ -72,14 +72,35 @@ namespace Bodzio2k.BattleSystem
         private void ChangeSprite(GameObject go)
         {
             SpriteRenderer sr = null;
-            //string subdirectory = gameMode == GameMode.DesignerMode ? "DesignerMode" : "PlayerMode";
             Bodzio2k.Unit.Unit unit;
+            GenericTile genericTile;
 
             if (go.TryGetComponent<SpriteRenderer>(out sr))
             {
                 if (go.TryGetComponent<Bodzio2k.Unit.Unit>(out unit))
                 {
                     sr.sprite = unit.properties.sprites[(int) gameMode];
+
+                    return;
+                }
+
+                if (go.TryGetComponent<GenericTile>(out genericTile))
+                {
+                    sr.sprite = genericTile.sprites[(int)gameMode];
+
+                    return;
+                }
+            }
+
+            int childCount = go.transform.childCount;
+
+            if (childCount > 0)
+            {
+                for (int i = 0; i < go.transform.childCount; i++)
+                {
+                    GameObject childGo = go.transform.GetChild(i).gameObject;
+
+                    ChangeSprite(childGo);
                 }
             }
         }

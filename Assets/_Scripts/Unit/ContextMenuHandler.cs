@@ -24,5 +24,4 @@ public class ContextMenuHandler : MonoBehaviour
     {
         OnAttack?.Invoke(this, EventArgs.Empty);
     }
-    
 }

@@ -2,7 +2,7 @@
 {
     public enum GameMode
     {
-        DesignerMode,
-        ReleaseMode
+        DesignerMode = 0,
+        ReleaseMode = 1
     }
 }

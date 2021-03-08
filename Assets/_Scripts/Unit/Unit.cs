@@ -201,5 +201,5 @@ namespace Bodzio2k.Unit
             moveRangeSpriteOverlay = Resources.Load<Sprite>("MovingRangeOverlay");
             attackRangeSpriteOverlay = Resources.Load<Sprite>("AimingRangeOverlay");
         }
-}
+    }
 }

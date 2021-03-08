@@ -10,11 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24e9975dbf5acc94fbb6bf35d0e5f6d6, type: 3}
-  m_Name: Immobilzer
+  m_Name: Czolg
   m_EditorClassIdentifier: 
   health: 100
   tags: 
   damageDealt: 0
   moveRange: 1
-  attackRange: 1
-  sprites: []
+  attackRange: 4
+  sprites:
+  - {fileID: 21300000, guid: 47c63df594a5ea645aa3c7c76d16bf6e, type: 3}
+  - {fileID: 21300000, guid: f90a4513efc1e1844801540dfb093345, type: 3}
+  damageMultiplier: 1

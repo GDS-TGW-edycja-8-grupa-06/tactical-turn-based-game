@@ -45,6 +45,7 @@ namespace Bodzio2k.Unit
             sm.addState(new ShowingContextMenu());
             sm.addState(new ChangeDamageMultiplier());
             sm.addState(new TakeDamage());
+            sm.addState(new DisableAttack());
 
             overlay = transform.Find("Overlay").gameObject;
 

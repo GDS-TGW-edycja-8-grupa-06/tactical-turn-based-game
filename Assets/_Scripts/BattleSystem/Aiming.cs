@@ -74,7 +74,7 @@ namespace Bodzio2k.BattleSystem
 
         private bool IsMoveWithinRange(Vector3 targetPosition)
         {
-            List<Vector3> availablePostions = GetAvailablePositions(_context.selectedUnit);
+            List<Vector3> availablePostions = unit.GetAvailablePositions(Unit.Action.Attack);
 
             if (availablePostions.Contains(targetPosition))
             {
@@ -82,21 +82,6 @@ namespace Bodzio2k.BattleSystem
             }
 
             return false;
-        }
-
-        private List<Vector3> GetAvailablePositions(GameObject pawn)
-        {
-            List<Vector3> availablePostions = new List<Vector3>();
-            Vector3 pawnPostion = pawn.transform.position;
-            Properties unitProperties = unit.properties;
-            int attackRange = unitProperties.attackRange;
-
-            availablePostions.Add(new Vector3(pawnPostion.x + attackRange, pawnPostion.y));
-            availablePostions.Add(new Vector3(pawnPostion.x + -attackRange, pawnPostion.y));
-            availablePostions.Add(new Vector3(pawnPostion.x, pawnPostion.y + attackRange));
-            availablePostions.Add(new Vector3(pawnPostion.x, pawnPostion.y + -attackRange));
-
-            return availablePostions;
         }
 
         public override void begin()

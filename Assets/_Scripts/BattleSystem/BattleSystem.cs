@@ -2,7 +2,6 @@
 using UnityEngine;
 using Prime31.StateKit;
 using UnityEngine.Tilemaps;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Bodzio2k.BattleSystem

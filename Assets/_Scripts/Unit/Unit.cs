@@ -3,6 +3,7 @@ using UnityEngine;
 using Prime31.StateKit;
 using System.Linq;
 using System;
+using UnityEngine.Tilemaps;
 
 namespace Bodzio2k.Unit
 {
@@ -159,17 +160,63 @@ namespace Bodzio2k.Unit
             }
         }
 
-        //private bool IsOverlayAlreadyCreated()
-        //{
-        //    if (overlay == null || overlay.transform.childCount == 0)
-        //    {
-        //        return false;
-        //    }
+        public List<Vector3> GetAvailablePositions(Action action)
+        {
+            List<Vector3> availablePostions = new List<Vector3>();
+            Vector3 pawnPostion = transform.position;
+            int range = action == Action.Attack ? properties.attackRange : properties.moveRange;
 
-        //    overlay.SetActive(true);
+            availablePostions.Add(new Vector3(pawnPostion.x + range, pawnPostion.y));
+            availablePostions.Add(new Vector3(pawnPostion.x + -range, pawnPostion.y));
+            availablePostions.Add(new Vector3(pawnPostion.x, pawnPostion.y + range));
+            availablePostions.Add(new Vector3(pawnPostion.x, pawnPostion.y + -range));
 
-        //    return true;
-        //}
+            return availablePostions;
+        }
+
+        public bool IsActionWithinRange(Action action, Vector3 targetPosition)
+        {
+            List<Vector3> availablePostions = GetAvailablePositions(Action.Move);
+
+            if (availablePostions.Contains(targetPosition))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool IsMoveValid(ref Vector3 targetPosition)
+        {
+            bool moveIsValid = false;
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePosition2D = new Vector2(mousePosition.x, mousePosition.y);
+            
+            Vector3Int tilemapPosition = battleSystem.grid.WorldToCell(mousePosition);
+
+            Tile tile = battleSystem.grid.GetTile<Tile>(tilemapPosition);
+            LayerMask restrictedAreaMask = battleSystem.restrictedArea;
+
+            if (!canStepOntoBlueTiles)
+            {
+                restrictedAreaMask = restrictedAreaMask | battleSystem.blueTiles;
+            }
+
+            RaycastHit2D hit = Physics2D.Raycast(mousePosition2D, Vector2.zero, Mathf.Infinity, restrictedAreaMask);
+
+            if (hit.collider == null)
+            {
+                targetPosition = new Vector3(tilemapPosition.x + 1, tilemapPosition.y, 0);
+
+                moveIsValid = true;
+            }
+            else
+            {
+                moveIsValid = false;
+            }
+
+            return moveIsValid;
+        }
 
         private bool IsTileOccupied(Vector2 postion)
         {

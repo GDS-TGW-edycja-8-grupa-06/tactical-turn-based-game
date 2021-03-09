@@ -17342,6 +17342,7 @@ MonoBehaviour:
   selectedUnit: {fileID: 0}
   grid: {fileID: 249475830}
   gamePhase: 0
+  gameMode: 1
   cameraPosition: {x: 0, y: 0, z: 0}
   cameraFocus: {fileID: 209838427}
 --- !u!4 &306917737

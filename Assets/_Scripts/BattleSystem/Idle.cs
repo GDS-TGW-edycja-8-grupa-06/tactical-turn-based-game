@@ -7,7 +7,7 @@ namespace Bodzio2k.BattleSystem
     public class Idle : SKState<BattleSystem>
     {
         private LayerMask playerLayerMask;
-
+        
         public override void update(float deltaTime)
         {
             if (Input.GetMouseButtonDown(0))
@@ -21,9 +21,13 @@ namespace Bodzio2k.BattleSystem
 
                 if (hit.collider != null)
                 {
+                    Unit.Unit unit;
+
                     _context.selectedUnit = hit.collider.gameObject;
 
-                    _context.selectedUnit.GetComponent<Unit.Unit>().sm.changeState<ShowingContextMenu>();
+                    unit = _context.selectedUnit.GetComponent<Unit.Unit>();
+
+                    unit.sm.changeState<ShowingContextMenu>();
                 }
                 else
                 {

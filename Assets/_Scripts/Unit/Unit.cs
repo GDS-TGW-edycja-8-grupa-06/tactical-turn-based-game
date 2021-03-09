@@ -20,7 +20,7 @@ namespace Bodzio2k.Unit
         private GameObject contextMenuInstance;
 
         [HideInInspector]
-        public Action action;
+        public List<Action> actionsRemaining;
 
         [SerializeField]
         public GameObject overlayTilePrefab;
@@ -36,6 +36,8 @@ namespace Bodzio2k.Unit
         private Sprite attackRangeSpriteOverlay;
 
         private bool canStepOntoBlueTiles = false;
+
+        private ContextMenuHandler contextMenuHandler;
 
         private void Start()
         {
@@ -64,7 +66,17 @@ namespace Bodzio2k.Unit
                 Vector3 position = GetContextMenuPostion();
 
                 contextMenuInstance = Instantiate(contextMenu, position, Quaternion.identity);
+
+                contextMenuHandler = contextMenuInstance.GetComponent<ContextMenuHandler>();
+
+                EnableActions();
             }
+        }
+
+        private void EnableActions()
+        {
+            contextMenuHandler.buttonMove.enabled = actionsRemaining.Contains(Action.Move);
+            contextMenuHandler.buttonAttack.enabled = actionsRemaining.Contains(Action.Attack);
         }
 
         public void HideContextMenu()

@@ -3,7 +3,6 @@
     public enum Action
     {
         Move,
-        Attack,
-        Both
+        Attack
     } 
 }

@@ -15,6 +15,11 @@ public class ContextMenuHandler : MonoBehaviour
     [SerializeField]
     public Button buttonAttack;
 
+    private void Start()
+    {
+        return;
+    }
+
     public void OnMoveButtonClicked()
     {
         OnMove?.Invoke(this, EventArgs.Empty);

@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using Prime31.StateKit;
-using UnityEngine.Tilemaps;
-using System.Collections.Generic;
 using Bodzio2k.Unit;
 using System;
+using System.Linq;
 
 namespace Bodzio2k.BattleSystem
 {
@@ -25,18 +24,16 @@ namespace Bodzio2k.BattleSystem
                         _context.selectedUnit.transform.position = targetPosition;
 
                         unit.sm.changeState<Unit.Idle>();
-
-                        if (unit.action == Unit.Action.Both)
-                        {
-                            unit.action = Unit.Action.Attack;
-                        }
                     }
                     else
                     {
                         return;
                     }
 
-                    _machine.changeState<ChangeSide>();
+                    if (unit.actionsRemaining.Count == 0)
+                    {
+                        _machine.changeState<ChangeSide>();
+                    }
                 }
             }
         }
@@ -58,6 +55,8 @@ namespace Bodzio2k.BattleSystem
 
             unit.HideRangeOverlay();
             unit.HideContextMenu();
+
+            unit.actionsRemaining.Remove(Unit.Action.Move);
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using Prime31.StateKit;
 using Bodzio2k.BattleSystem;
-using Bodzio2k.Unit;
 
 namespace Bodzio2k.Unit
 {
@@ -15,8 +14,8 @@ namespace Bodzio2k.Unit
             {
                 _context.HideContextMenu();
 
-                _context.sm.changeState<Bodzio2k.Unit.Idle>();
-                _context.battleSystem.GetComponent<BattleSystem.BattleSystem>().sm.changeState<Bodzio2k.BattleSystem.Idle>();
+                _context.sm.changeState<Idle>();
+                _context.battleSystem.GetComponent<BattleSystem.BattleSystem>().sm.changeState<BattleSystem.Idle>();
             }
         }
 
@@ -41,7 +40,5 @@ namespace Bodzio2k.Unit
         {
             _context.battleSystem.sm.changeState<MovingUnit>();
         }
-
-        
     }
 }

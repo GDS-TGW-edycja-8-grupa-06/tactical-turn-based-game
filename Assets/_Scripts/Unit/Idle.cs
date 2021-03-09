@@ -15,6 +15,12 @@ namespace Bodzio2k.Unit
         {
             base.begin();
 
+            if (_context.actionsRemaining.Count == 0)
+            {
+                _context.actionsRemaining.Add(Action.Attack);
+                _context.actionsRemaining.Add(Action.Move);
+            }
+
             try
             {
                 _context.battleSystem.sm.changeState<BattleSystem.Idle>();
@@ -23,7 +29,8 @@ namespace Bodzio2k.Unit
             {
                 return;
             }
+
+            return;
         }
     }
-
 }

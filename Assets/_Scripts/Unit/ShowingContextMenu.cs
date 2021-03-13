@@ -29,6 +29,8 @@ namespace Bodzio2k.Unit
 
             ContextMenuHandler.OnMove += ContextMenuHandler_OnMove;
             ContextMenuHandler.OnAttack += ContextMenuHandler_OnAttack;
+
+            _context.battleSystem.sm.changeState<Inactive>();
         }
 
         private void ContextMenuHandler_OnAttack(object sender, System.EventArgs e)

@@ -26,6 +26,7 @@ namespace Bodzio2k.BattleSystem
             ResetUnitActions();
 
             _context.selectedUnit = null;
+            _context.touchedUnit = null;
 
             _machine.changeState<Idle>();
         }

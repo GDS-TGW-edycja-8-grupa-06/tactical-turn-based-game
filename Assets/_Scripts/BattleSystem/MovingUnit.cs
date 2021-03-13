@@ -57,6 +57,8 @@ namespace Bodzio2k.BattleSystem
             unit.HideContextMenu();
 
             unit.actionsRemaining.Remove(Unit.Action.Move);
+
+            unit.battleSystem.touchedUnit = unit.transform.gameObject;
         }
     }
 }

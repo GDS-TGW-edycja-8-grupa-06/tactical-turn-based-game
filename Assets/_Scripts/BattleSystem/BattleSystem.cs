@@ -17,6 +17,7 @@ namespace Bodzio2k.BattleSystem
 
         [HideInInspector]
         public GameObject selectedUnit;
+        public GameObject touchedUnit;
 
         [HideInInspector]
         public SKStateMachine<BattleSystem> sm;
@@ -43,6 +44,7 @@ namespace Bodzio2k.BattleSystem
             sm.addState(new ChangeSide());
             sm.addState(new EnteringWinnigArea());
             sm.addState(new Aiming());
+            sm.addState(new Inactive());
 
             UIHandler.OnSwitchMode += UIHandler_OnSwitchMode;
         }

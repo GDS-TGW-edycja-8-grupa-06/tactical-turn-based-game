@@ -23,7 +23,20 @@ namespace Bodzio2k.BattleSystem
                 {
                     Unit.Unit unit;
 
+                    //if (_context.selectedUnit != null)
+                    //{
+                    //    unit = _context.selectedUnit.GetComponent<Unit.Unit>();
+                    //    unit.HideContextMenu();
+                    //    unit.sm.changeState<Unit.Idle>();
+                    //}
                     _context.selectedUnit = hit.collider.gameObject;
+
+                    if (_context.touchedUnit != null && _context.touchedUnit != _context.selectedUnit)
+                    {
+                        _context.cameraPosition = mousePosition;
+
+                        return;
+                    }
 
                     unit = _context.selectedUnit.GetComponent<Unit.Unit>();
 

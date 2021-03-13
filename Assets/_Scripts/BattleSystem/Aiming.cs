@@ -15,32 +15,35 @@ namespace Bodzio2k.BattleSystem
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Vector3 targetPosition = Vector3.zero;
+                Vector3 aimingPosition = Vector3.zero;
 
-                if (IsMoveValid(ref targetPosition))
+                if (IsAttackValid(ref aimingPosition))
                 {
-                    if (IsMoveWithinRange(targetPosition))
+                    if (IsAttackWithinRange(aimingPosition))
                     {
-                        _context.selectedUnit.transform.position = targetPosition;
+                        GameObject hitten = GetTarget(aimingPosition);
 
-                        unit.sm.changeState<Unit.Idle>();
-                    }
-                    else
-                    {
-                        return;
+                        unit.actionsRemaining.Remove(Unit.Action.Attack);
+                        
+                        
                     }
 
                     if (unit.actionsRemaining.Count == 0)
                     {
+                        unit.sm.changeState<Unit.Inactive>();
                         _machine.changeState<ChangeSide>();
+                    }
+                    else
+                    {
+                        unit.sm.changeState<Unit.Idle>();
                     }
                 }
             }
         }
 
-        private bool IsMoveValid(ref Vector3 targetPosition)
+        private bool IsAttackValid(ref Vector3 targetPosition)
         {
-            bool moveIsValid = false;
+            bool attackIsValid = false;
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 mousePosition2D = new Vector2(mousePosition.x, mousePosition.y);
 
@@ -49,28 +52,23 @@ namespace Bodzio2k.BattleSystem
             Tile tile = _context.grid.GetTile<Tile>(tilemapPosition);
             LayerMask restrictedAreaMask = _context.restrictedArea;
             
-            //if (!canStepOntoBlueTiles)
-            //{
-            //    restrictedAreaMask = restrictedAreaMask | _context.blueTiles;
-            //}
-
             RaycastHit2D hit = Physics2D.Raycast(mousePosition2D, Vector2.zero, Mathf.Infinity, restrictedAreaMask);
 
             if (hit.collider == null)
             {
                 targetPosition = new Vector3(tilemapPosition.x + 1, tilemapPosition.y, 0);
 
-                moveIsValid = true;
+                attackIsValid = true;
             }
             else
             {
-                moveIsValid = false;
+                attackIsValid = false;
             }
 
-            return moveIsValid;
+            return attackIsValid;
         }
 
-        private bool IsMoveWithinRange(Vector3 targetPosition)
+        private bool IsAttackWithinRange(Vector3 targetPosition)
         {
             List<Vector3> availablePostions = unit.GetAvailablePositions(Unit.Action.Attack);
 
@@ -80,6 +78,21 @@ namespace Bodzio2k.BattleSystem
             }
 
             return false;
+        }
+
+        private GameObject GetTarget(Vector3 position)
+        {
+            GameObject target = null;
+            LayerMask opponentPlayerLayerMask = unit.battleSystem.gamePhase == GamePhase.PlayerOne ? unit.battleSystem.playerTwoLayerMask : unit.battleSystem.playerOneLayerMask;
+
+            RaycastHit2D hit = Physics2D.Raycast(position, Vector2.zero, Mathf.Infinity, opponentPlayerLayerMask);
+
+            if (hit.collider != null)
+            {
+                ;
+            }
+
+            return target;
         }
 
         public override void begin()
@@ -100,7 +113,7 @@ namespace Bodzio2k.BattleSystem
             unit.HideRangeOverlay();
             unit.HideContextMenu();
 
-            unit.actionsRemaining.Remove(Unit.Action.Attack);
+            unit.battleSystem.touchedUnit = unit.transform.gameObject;
         }
     }
 }

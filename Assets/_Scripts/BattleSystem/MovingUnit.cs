@@ -23,16 +23,18 @@ namespace Bodzio2k.BattleSystem
                     {
                         _context.selectedUnit.transform.position = targetPosition;
 
-                        unit.sm.changeState<Unit.Idle>();
-                    }
-                    else
-                    {
-                        return;
+                        unit.actionsRemaining.Remove(Unit.Action.Move);
+                        unit.battleSystem.touchedUnit = unit.transform.gameObject;
                     }
 
                     if (unit.actionsRemaining.Count == 0)
                     {
+                        unit.sm.changeState<Unit.Inactive>();
                         _machine.changeState<ChangeSide>();
+                    }
+                    else
+                    {
+                        unit.sm.changeState<Unit.Idle>();
                     }
                 }
             }
@@ -55,10 +57,6 @@ namespace Bodzio2k.BattleSystem
 
             unit.HideRangeOverlay();
             unit.HideContextMenu();
-
-            unit.actionsRemaining.Remove(Unit.Action.Move);
-
-            unit.battleSystem.touchedUnit = unit.transform.gameObject;
         }
     }
 }

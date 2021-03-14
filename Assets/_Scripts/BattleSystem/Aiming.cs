@@ -9,7 +9,7 @@ namespace Bodzio2k.BattleSystem
 {
     public class Aiming : SKState<BattleSystem>
     {
-        private Unit.Unit unit;
+        private Unit.Unit aimingUnit;
 
         public override void update(float deltaTime)
         {
@@ -17,25 +17,28 @@ namespace Bodzio2k.BattleSystem
             {
                 Vector3 aimingPosition = Vector3.zero;
 
-                if (IsAttackValid(ref aimingPosition))
+                if (aimingUnit.IsAttackValid(ref aimingPosition))
                 {
-                    if (IsAttackWithinRange(aimingPosition))
-                    {
-                        GameObject hitten = GetTarget(aimingPosition);
+                    GameObject hitten = GetTarget(aimingPosition);
 
-                        unit.actionsRemaining.Remove(Unit.Action.Attack);
-                        
-                        
+                    if (hitten != null)
+                    {
+                        Unit.Unit hittenUnit = hitten.GetComponent<Unit.Unit>();
+
+                        hittenUnit.willReceiveDamage = aimingUnit.properties.damageDealt;
+                        hittenUnit.sm.changeState<TakeDamage>();
+
+                        aimingUnit.actionsRemaining.Remove(Unit.Action.Attack);
                     }
 
-                    if (unit.actionsRemaining.Count == 0)
+                    if (aimingUnit.actionsRemaining.Count == 0)
                     {
-                        unit.sm.changeState<Unit.Inactive>();
+                        aimingUnit.sm.changeState<Unit.Inactive>();
                         _machine.changeState<ChangeSide>();
                     }
                     else
                     {
-                        unit.sm.changeState<Unit.Idle>();
+                        aimingUnit.sm.changeState<Unit.Idle>();
                     }
                 }
             }
@@ -68,28 +71,28 @@ namespace Bodzio2k.BattleSystem
             return attackIsValid;
         }
 
-        private bool IsAttackWithinRange(Vector3 targetPosition)
-        {
-            List<Vector3> availablePostions = unit.GetAvailablePositions(Unit.Action.Attack);
+        //private bool IsAttackWithinRange(Vector3 targetPosition)
+        //{
+        //    List<Vector3> availablePostions = unit.GetAvailablePositions(Unit.Action.Attack);
 
-            if (availablePostions.Contains(targetPosition))
-            {
-                return true;
-            }
+        //    if (availablePostions.Contains(targetPosition))
+        //    {
+        //        return true;
+        //    }
 
-            return false;
-        }
+        //    return false;
+        //}
 
         private GameObject GetTarget(Vector3 position)
         {
             GameObject target = null;
-            LayerMask opponentPlayerLayerMask = unit.battleSystem.gamePhase == GamePhase.PlayerOne ? unit.battleSystem.playerTwoLayerMask : unit.battleSystem.playerOneLayerMask;
+            LayerMask opponentPlayerLayerMask = aimingUnit.battleSystem.gamePhase == GamePhase.PlayerOne ? aimingUnit.battleSystem.playerTwoLayerMask : aimingUnit.battleSystem.playerOneLayerMask;
 
             RaycastHit2D hit = Physics2D.Raycast(position, Vector2.zero, Mathf.Infinity, opponentPlayerLayerMask);
 
             if (hit.collider != null)
             {
-                ;
+                target = hit.collider.gameObject;
             }
 
             return target;
@@ -99,21 +102,21 @@ namespace Bodzio2k.BattleSystem
         {
             base.begin();
 
-            unit = _context.selectedUnit.GetComponent<Unit.Unit>();
+            aimingUnit = _context.selectedUnit.GetComponent<Unit.Unit>();
 
             //canStepOntoBlueTiles = Array.Exists(unit.properties.tags, tag => tag == Tag.CanStepOntoBlueTiles);
 
-            unit.CreateRangeOverlay(OverlayType.Attack);
+            aimingUnit.CreateRangeOverlay(OverlayType.Attack);
         }
 
         public override void end()
         {
             base.end();
 
-            unit.HideRangeOverlay();
-            unit.HideContextMenu();
+            aimingUnit.HideRangeOverlay();
+            aimingUnit.HideContextMenu();
 
-            unit.battleSystem.touchedUnit = unit.transform.gameObject;
+            aimingUnit.battleSystem.touchedUnit = aimingUnit.transform.gameObject;
         }
     }
 }

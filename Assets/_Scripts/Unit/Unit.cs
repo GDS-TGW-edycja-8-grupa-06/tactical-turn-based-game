@@ -40,6 +40,9 @@ namespace Bodzio2k.Unit
 
         private ContextMenuHandler contextMenuHandler;
 
+        [HideInInspector]
+        public int willReceiveDamage = 0;
+
         private void Start()
         {
             battleSystem = GameObject.Find("/BattleSystem").GetComponent<BattleSystem.BattleSystem>();
@@ -51,6 +54,7 @@ namespace Bodzio2k.Unit
             sm.addState(new TakeDamage());
             sm.addState(new DisableAttack());
             sm.addState(new Inactive());
+            sm.addState(new Die());
 
             overlay = transform.Find("Overlay").gameObject;
 
@@ -231,6 +235,19 @@ namespace Bodzio2k.Unit
             }
 
             return moveIsValid;
+        }
+
+        public bool IsAttackValid(ref Vector3 targetPosition)
+        {
+            bool attackIsValid = false;
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePosition2D = new Vector2(mousePosition.x, mousePosition.y);
+
+            attackIsValid = IsTileOccupiedByEnemyUnit(mousePosition2D);
+
+            targetPosition = new Vector3(mousePosition2D.x, mousePosition2D.y, 0);
+
+            return attackIsValid;
         }
 
         private bool IsTileOccupied(Vector2 postion)

@@ -8,7 +8,16 @@ namespace Bodzio2k.Unit
         {
             base.begin();
 
-            _context.sm.changeState<Idle>();
+            _context.properties.health -= _context.willReceiveDamage;
+
+            if (_context.properties.health <= 0)
+            {
+                _context.sm.changeState<Die>();
+            }
+            else
+            {
+                _context.sm.changeState<Idle>();
+            }
         }
 
         public override void end()

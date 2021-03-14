@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   tags: 
-  damageDealt: 0
+  damageDealt: 10
   moveRange: 1
   attackRange: 1
   sprites:

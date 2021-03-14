@@ -15,8 +15,8 @@ MonoBehaviour:
   health: 100
   tags: 00000000
   damageDealt: 0
-  moveRange: 4
-  attackRange: 2
+  moveRange: 3
+  attackRange: 1
   sprites:
   - {fileID: 21300000, guid: 9272eea51903f7041912523c3d5f2291, type: 3}
   - {fileID: 21300000, guid: c172f46dfa077d048ba3f941436ad72d, type: 3}

@@ -4,6 +4,7 @@ using Prime31.StateKit;
 using System.Linq;
 using System;
 using UnityEngine.Tilemaps;
+using Bodzio2k.BattleSystem;
 
 namespace Bodzio2k.Unit
 {
@@ -103,13 +104,6 @@ namespace Bodzio2k.Unit
 
         public void CreateRangeOverlay(OverlayType overlayType)
         {
-            //if (IsOverlayAlreadyCreated())
-            //{
-            //    PostCreateOverlay();
-
-            //    return;
-            //}
-
             int range = overlayType == OverlayType.Move ? properties.moveRange : properties.attackRange;
         
             List<Vector3> overlayPositions = GetOverlayPositions(range);
@@ -119,7 +113,7 @@ namespace Bodzio2k.Unit
                 InstantiateOverlayTile(position, overlayType);
             }
 
-            PostCreateOverlay();
+            PostCreateOverlay(overlayType);
 
             return;
         }
@@ -160,20 +154,24 @@ namespace Bodzio2k.Unit
             return positions;
         }
 
-        private void PostCreateOverlay()
+        private void PostCreateOverlay(OverlayType overlayType)
         {
+            bool active;
+
             for (int i = 0; i < overlay.transform.childCount; i++)
             {
                 GameObject overlayChild = overlay.transform.GetChild(i).gameObject;
 
-                if (IsTileOccupied(overlayChild.transform.position))
+                if (overlayType == OverlayType.Move)
                 {
-                    overlayChild.SetActive(false);
+                    active = !IsTileOccupied(overlayChild.transform.position);
                 }
                 else
                 {
-                    overlayChild.SetActive(true);
+                    active = IsTileOccupiedByEnemyUnit(overlayChild.transform.position);
                 }
+
+                overlayChild.SetActive(active);
             }
         }
 
@@ -245,6 +243,22 @@ namespace Bodzio2k.Unit
             }
 
             RaycastHit2D hit = Physics2D.Raycast(postion, Vector2.zero, Mathf.Infinity, forbiddenMoves);
+
+            if (hit.collider != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool IsTileOccupiedByEnemyUnit(Vector2 postion)
+        {
+            LayerMask allowedLayerMask = battleSystem.gamePhase == GamePhase.PlayerOne ? battleSystem.playerTwoLayerMask : battleSystem.playerOneLayerMask;
+
+            RaycastHit2D hit = Physics2D.Raycast(postion, Vector2.zero, Mathf.Infinity, allowedLayerMask);
 
             if (hit.collider != null)
             {

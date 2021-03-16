@@ -1,4 +1,5 @@
 ﻿using Prime31.StateKit;
+using UnityEngine;
 
 namespace Bodzio2k.Unit
 {
@@ -9,6 +10,8 @@ namespace Bodzio2k.Unit
             base.begin();
 
             _context.properties.health -= _context.willReceiveDamage;
+
+            Debug.LogFormat("{0} received damage of {1}; health reiaminig {2}", _context.name, _context.willReceiveDamage, _context.properties.health);
 
             if (_context.properties.health <= 0)
             {

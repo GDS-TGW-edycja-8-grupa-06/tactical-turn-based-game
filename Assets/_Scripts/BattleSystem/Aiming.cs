@@ -23,6 +23,8 @@ namespace Bodzio2k.BattleSystem
 
                     if (hitten != null)
                     {
+                        Debug.LogFormat("{0} is aiming at {1}...", aimingUnit.name, hitten.name);
+
                         Unit.Unit hittenUnit = hitten.GetComponent<Unit.Unit>();
 
                         hittenUnit.willReceiveDamage = aimingUnit.properties.damageDealt;

@@ -110,7 +110,7 @@ namespace Bodzio2k.Unit
         {
             int range = overlayType == OverlayType.Move ? properties.moveRange : properties.attackRange;
         
-            List<Vector3> overlayPositions = GetOverlayPositions(range);
+            List<Vector3> overlayPositions = GetOverlayPositions(overlayType, range);
 
             foreach (Vector3 position in overlayPositions)
             {
@@ -140,19 +140,33 @@ namespace Bodzio2k.Unit
             }
         }
 
-        private List<Vector3> GetOverlayPositions(int range)
+        private List<Vector3> GetOverlayPositions(OverlayType overlayType, int range)
         {
             List<Vector3> positions = new List<Vector3>();
-            IEnumerable<int> ranges = Enumerable.Range(-range, range * 2 + 1).Where(r => r == -range || r == range);
+            IEnumerable<int> ranges = Enumerable.Range(-range, range * 2 + 1);
 
-            foreach (int h in ranges)
+            if (overlayType == OverlayType.Move)
             {
-                positions.Add(new Vector3(h, 0, transform.position.z));
+                foreach (int h in ranges)
+                {
+                    positions.Add(new Vector3(h, 0, transform.position.z));
+                }
+
+                foreach (int v in ranges)
+                {
+                    positions.Add(new Vector3(0, v, transform.position.z));
+                } 
             }
 
-            foreach (int v in ranges)
+            if (overlayType == OverlayType.Attack)
             {
-                positions.Add(new Vector3(0, v, transform.position.z));
+                foreach (int h in ranges)
+                {
+                    foreach (int v in ranges)
+                    {
+                        positions.Add(new Vector3(h, v, transform.position.z));
+                    }
+                }
             }
 
             return positions;

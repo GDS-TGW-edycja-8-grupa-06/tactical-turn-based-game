@@ -30,10 +30,10 @@ namespace Bodzio2k.BattleSystem
                         hittenUnit.willReceiveDamage = aimingUnit.properties.damageDealt;
                         hittenUnit.sm.changeState<TakeDamage>();
 
-                        aimingUnit.actionsRemaining.Remove(Unit.Action.Attack);
+                        aimingUnit.actionsRemaining--;
                     }
 
-                    if (aimingUnit.actionsRemaining.Count == 0)
+                    if (aimingUnit.actionsRemaining == 0)
                     {
                         aimingUnit.sm.changeState<Unit.Inactive>();
                         _machine.changeState<ChangeSide>();

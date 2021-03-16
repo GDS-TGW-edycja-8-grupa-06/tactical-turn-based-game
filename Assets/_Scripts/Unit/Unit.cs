@@ -21,7 +21,7 @@ namespace Bodzio2k.Unit
         private GameObject contextMenuInstance;
 
         [HideInInspector]
-        public List<Action> actionsRemaining;
+        public int actionsRemaining;
 
         [SerializeField]
         public GameObject overlayTilePrefab;
@@ -85,8 +85,8 @@ namespace Bodzio2k.Unit
 
         private void EnableActions()
         {
-            contextMenuHandler.buttonMove.enabled = actionsRemaining.Contains(Action.Move);
-            contextMenuHandler.buttonAttack.enabled = actionsRemaining.Contains(Action.Attack);
+            //contextMenuHandler.buttonMove.enabled = actionsRemaining.Contains(Action.Move);
+            //contextMenuHandler.buttonAttack.enabled = actionsRemaining.Contains(Action.Attack);
         }
 
         public void HideContextMenu()

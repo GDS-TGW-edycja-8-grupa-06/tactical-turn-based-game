@@ -23,11 +23,11 @@ namespace Bodzio2k.BattleSystem
                     {
                         _context.selectedUnit.transform.position = targetPosition;
 
-                        unit.actionsRemaining.Remove(Unit.Action.Move);
+                        unit.actionsRemaining--;
                         unit.battleSystem.touchedUnit = unit.transform.gameObject;
                     }
 
-                    if (unit.actionsRemaining.Count == 0)
+                    if (unit.actionsRemaining == 0)
                     {
                         unit.sm.changeState<Unit.Inactive>();
                         _machine.changeState<ChangeSide>();

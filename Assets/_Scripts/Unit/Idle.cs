@@ -15,10 +15,9 @@ namespace Bodzio2k.Unit
         {
             base.begin();
 
-            if (_context.actionsRemaining.Count == 0)
+            if (_context.actionsRemaining == 0)
             {
-                _context.actionsRemaining.Add(Action.Attack);
-                _context.actionsRemaining.Add(Action.Move);
+                _context.actionsRemaining = 2;
             }
 
             try

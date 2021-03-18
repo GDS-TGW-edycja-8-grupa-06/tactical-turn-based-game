@@ -1,5 +1,4 @@
-﻿using System;
-using Prime31.StateKit;
+﻿using Prime31.StateKit;
 
 namespace Bodzio2k.Unit
 {
@@ -9,12 +8,7 @@ namespace Bodzio2k.Unit
         {
             base.begin();
 
-            Destroy(_context);
-        }
-
-        private void Destroy(Unit context)
-        {
-            throw new NotImplementedException();
+            _context.GetComponent<Unit>().Die();
         }
 
         public override void end()

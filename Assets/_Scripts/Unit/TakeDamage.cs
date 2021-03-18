@@ -9,11 +9,11 @@ namespace Bodzio2k.Unit
         {
             base.begin();
 
-            _context.properties.health -= _context.willReceiveDamage;
+            _context.health -= _context.willReceiveDamage * _context.damageMultiplier;
 
-            Debug.LogFormat("{0} received damage of {1}; health reiaminig {2}", _context.name, _context.willReceiveDamage, _context.properties.health);
+            Debug.LogFormat("{0} received damage of {1}; damage multiplier {2}; health reiaminig {3}", _context.name, _context.willReceiveDamage, _context.damageMultiplier, _context.health);
 
-            if (_context.properties.health <= 0)
+            if (_context.health <= 0)
             {
                 _context.sm.changeState<Die>();
             }

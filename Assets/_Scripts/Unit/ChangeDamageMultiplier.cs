@@ -9,11 +9,7 @@ namespace Bodzio2k.Unit
         {
             base.begin();
 
-            float damageMultiplier = 0.0f;
-
-            damageMultiplier = _context.properties.damageMultiplier == 1.0f ? 0.5f : 1.0f;
-
-            _context.properties.damageMultiplier = damageMultiplier;
+            _context.damageMultiplier = _context.damageMultiplier == 1.0f ? 0.5f : 1.0f;
 
             _context.sm.changeState<Idle>();
         }

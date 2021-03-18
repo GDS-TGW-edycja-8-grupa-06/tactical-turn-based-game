@@ -41,7 +41,9 @@ namespace Bodzio2k.Unit
         private ContextMenuHandler contextMenuHandler;
 
         [HideInInspector]
-        public int willReceiveDamage = 0;
+        public float willReceiveDamage = 0.0f;
+        public float health = 100.0f;
+        public float damageMultiplier = 1.0f;
 
         private void Start()
         {
@@ -305,6 +307,11 @@ namespace Bodzio2k.Unit
             {
                 return false;
             }
+        }
+
+        public void Die()
+        {
+            Destroy(this.gameObject);
         }
 
         private void Update()

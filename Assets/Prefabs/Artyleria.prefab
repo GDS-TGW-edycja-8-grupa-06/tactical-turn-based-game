@@ -130,10 +130,11 @@ MonoBehaviour:
   side: 0
   contextMenu: {fileID: 3118020586155931357, guid: 19c3bae4b49f21d4c8f233c36cf51b0e,
     type: 3}
-  action: 0
+  actionsRemaining: 0
   overlayTilePrefab: {fileID: 6544647781196717240, guid: 82fbe1011d4a76d449674a9e7aee2411,
     type: 3}
   battleSystem: {fileID: 0}
+  willReceiveDamage: 0
 --- !u!61 &4736171780175840795
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -158,5 +159,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.9, y: 0.9}
   m_EdgeRadius: 0

@@ -199,11 +199,17 @@ namespace Bodzio2k.Unit
             Vector3 pawnPostion = transform.position;
             int range = action == Action.Attack ? properties.attackRange : properties.moveRange;
 
-            availablePostions.Add(new Vector3(pawnPostion.x + range, pawnPostion.y));
-            availablePostions.Add(new Vector3(pawnPostion.x + -range, pawnPostion.y));
-            availablePostions.Add(new Vector3(pawnPostion.x, pawnPostion.y + range));
-            availablePostions.Add(new Vector3(pawnPostion.x, pawnPostion.y + -range));
-
+            for (int x = 1; x < range + 1; x++)
+            {
+                for (int y = 1; y < range + 1; y++)
+                {
+                    availablePostions.Add(new Vector3(pawnPostion.x + x, pawnPostion.y));
+                    availablePostions.Add(new Vector3(pawnPostion.x + -x, pawnPostion.y));
+                    availablePostions.Add(new Vector3(pawnPostion.x, pawnPostion.y + y));
+                    availablePostions.Add(new Vector3(pawnPostion.x, pawnPostion.y + -y));
+                }
+            }
+            
             return availablePostions;
         }
 

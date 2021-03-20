@@ -7,15 +7,12 @@ namespace Bodzio2k
     {
         private Unit.Unit unit = null;
 
-        private void Start()
-        {
-            return;
-        }
-
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.TryGetComponent(out unit))
             {
+                Debug.LogFormat("{0} entered slowing area...", collision.gameObject.name);
+
                 unit.sm.changeState<DisableAttack>();
             };
         }
@@ -24,7 +21,7 @@ namespace Bodzio2k
         {
             if (collision.gameObject.TryGetComponent(out unit))
             {
-                unit.sm.changeState<DisableAttack>();
+                Debug.LogFormat("{0} leaved slowing area...", collision.gameObject.name);
             };
         }
     }

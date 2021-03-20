@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 6208209811599276654}
   - component: {fileID: -880097174081197480}
   - component: {fileID: 1892418292773268636}
-  - component: {fileID: -8855609151927762741}
   m_Layer: 0
   m_Name: Chlopek
   m_TagString: Player
@@ -131,10 +130,13 @@ MonoBehaviour:
   side: 0
   contextMenu: {fileID: 3118020586155931357, guid: 19c3bae4b49f21d4c8f233c36cf51b0e,
     type: 3}
-  action: 0
+  actionsRemaining: 0
   overlayTilePrefab: {fileID: 6544647781196717240, guid: 82fbe1011d4a76d449674a9e7aee2411,
     type: 3}
   battleSystem: {fileID: 0}
+  willReceiveDamage: 0
+  health: 100
+  damageMultiplier: 1
 --- !u!61 &1892418292773268636
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -161,15 +163,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9, y: 0.9}
   m_EdgeRadius: 0
---- !u!114 &-8855609151927762741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6208209811599276655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58a0cd989533c2541b4c5744394119b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

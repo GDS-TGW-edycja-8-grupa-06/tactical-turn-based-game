@@ -1,4 +1,5 @@
 ﻿using Prime31.StateKit;
+using Bodzio2k.BattleSystem;
 
 namespace Bodzio2k.Unit
 {
@@ -8,12 +9,7 @@ namespace Bodzio2k.Unit
         {
             base.begin();
 
-            _context.sm.changeState<Idle>();
-        }
-
-        public override void end()
-        {
-            base.end();
+            _context.battleSystem.sm.changeState<ChangeSide>();
         }
 
         public override void update(float deltaTime)

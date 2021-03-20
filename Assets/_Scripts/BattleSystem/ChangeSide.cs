@@ -1,5 +1,6 @@
 ﻿using Prime31.StateKit;
 using Bodzio2k.Unit;
+using UnityEngine;
 
 namespace Bodzio2k.BattleSystem
 {
@@ -29,6 +30,13 @@ namespace Bodzio2k.BattleSystem
             _context.touchedUnit = null;
 
             _machine.changeState<Idle>();
+
+            if (_context.gamePhase == GamePhase.PlayerOne)
+            {
+                _context.roundNumber++;
+
+                Debug.LogFormat("Round {0} started...", _context.roundNumber);
+            }
         }
 
         private void ResetUnitActions()

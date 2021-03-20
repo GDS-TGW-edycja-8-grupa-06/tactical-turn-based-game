@@ -192,7 +192,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -17474,7 +17474,6 @@ MonoBehaviour:
   gameMode: 1
   cameraPosition: {x: 0, y: 0, z: 0}
   cameraFocus: {fileID: 209838427}
-  roundNumber: 1
 --- !u!4 &306917737
 Transform:
   m_ObjectHideFlags: 0
@@ -17543,71 +17542,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4339975906055535529, guid: 0cff0e54dea1731478b504fd4f2bf85e,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 1b925f8f27b17e4468208e7cc5846d94,
-        type: 3}
-    - target: {fileID: 4339975906081757647, guid: 0cff0e54dea1731478b504fd4f2bf85e,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 78717439de7d5004ebfc2cff8ab23e54,
-        type: 3}
-    - target: {fileID: 4339975906086657140, guid: 0cff0e54dea1731478b504fd4f2bf85e,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 395dd7a3895061046848d9fc862ddd61,
-        type: 3}
     - target: {fileID: 4339975906092440871, guid: 0cff0e54dea1731478b504fd4f2bf85e,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 4339975906092440872, guid: 0cff0e54dea1731478b504fd4f2bf85e,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 55b1a9b1c87a1464f9f040e5ea60d46e,
-        type: 3}
-    - target: {fileID: 4339975906480694073, guid: 0cff0e54dea1731478b504fd4f2bf85e,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 754f6122f531d0e4a9b9020da3a6a358,
-        type: 3}
-    - target: {fileID: 4339975906572860235, guid: 0cff0e54dea1731478b504fd4f2bf85e,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 58cd7cebb3f73f648a894cfa4d2007af,
-        type: 3}
-    - target: {fileID: 4339975906656953468, guid: 0cff0e54dea1731478b504fd4f2bf85e,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 6bebcd44d0baa2340ad926b0ef0830e6,
-        type: 3}
-    - target: {fileID: 4339975907330144274, guid: 0cff0e54dea1731478b504fd4f2bf85e,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: aabc92efe93d6b3448f5da07895ceeda,
-        type: 3}
-    - target: {fileID: 4339975907535810184, guid: 0cff0e54dea1731478b504fd4f2bf85e,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 7951bf9b8400ed7478e8d56316c534dc,
-        type: 3}
-    - target: {fileID: 7111715233530474789, guid: 0cff0e54dea1731478b504fd4f2bf85e,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 61232eacc9c2ec649a9f2470a4b4c4e2,
-        type: 3}
     - target: {fileID: 7646352378073605004, guid: 0cff0e54dea1731478b504fd4f2bf85e,
         type: 3}
       propertyPath: m_RootOrder

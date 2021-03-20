@@ -37,6 +37,9 @@ namespace Bodzio2k.BattleSystem
         [SerializeField]
         public GameObject cameraFocus;
 
+        [HideInInspector]
+        public int roundNumber = 1;
+
         private void Start()
         {
             sm = new SKStateMachine<BattleSystem>(this, new Idle());

@@ -3,7 +3,7 @@
     public enum Tag
     {
         CanStepOntoBlueTiles,
-        Tag02,
+        Immobilizer,
         Tag03,
         Tag04
     }

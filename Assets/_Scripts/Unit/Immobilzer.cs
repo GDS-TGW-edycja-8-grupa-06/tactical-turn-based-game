@@ -18,13 +18,15 @@ public class Immobilzer : MonoBehaviour
         LayerMask opponentLayerMask = unit.side == Bodzio2k.Side.PlayerOne ? LayerMask.NameToLayer("PlayerTwo") : LayerMask.NameToLayer("PlayerOne");
         GameObject collider = collision.gameObject;
         LayerMask colliderLayerMask = collider.layer;
+        Unit immobilizedUnit;
 
         if (colliderLayerMask != opponentLayerMask)
         {
             return;
         }
 
-        collider.GetComponent<Unit>().sm.changeState<DecreaseActionCount>();
+        immobilizedUnit = collider.GetComponent<Unit>();
+        immobilizedUnit.sm.changeState<DecreaseActionCount>();
 
         Debug.LogFormat("{0} entered immobilzed area...", collision.gameObject.name);
     }
@@ -34,14 +36,16 @@ public class Immobilzer : MonoBehaviour
         LayerMask opponentLayerMask = unit.side == Bodzio2k.Side.PlayerOne ? LayerMask.NameToLayer("PlayerTwo") : LayerMask.NameToLayer("PlayerOne");
         GameObject collider = collision.gameObject;
         LayerMask colliderLayerMask = collider.layer;
+        Unit immobilizedUnit;
 
         if (colliderLayerMask != opponentLayerMask)
         {
             return;
         }
 
-        collider.GetComponent<Unit>().sm.changeState<DecreaseActionCount>();
-        
+        immobilizedUnit = collider.GetComponent<Unit>();
+        immobilizedUnit.actionsRemaining = 2;
+
         Debug.LogFormat("{0} leaved immobilzed area...", collision.gameObject.name);
     }
 }

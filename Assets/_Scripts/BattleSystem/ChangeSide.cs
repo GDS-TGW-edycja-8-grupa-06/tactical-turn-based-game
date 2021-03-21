@@ -41,8 +41,6 @@ namespace Bodzio2k.BattleSystem
 
         private void ResetUnitActions()
         {
-            //unit.actionsRemaining.Add(Action.Attack);
-            //unit.actionsRemaining.Add(Action.Move);
             unit.actionsRemaining = 2;
         }
     }

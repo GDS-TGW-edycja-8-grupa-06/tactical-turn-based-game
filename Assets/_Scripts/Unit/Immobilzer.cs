@@ -24,6 +24,8 @@ public class Immobilzer : MonoBehaviour
             return;
         }
 
+        collider.GetComponent<Unit>().sm.changeState<DecreaseActionCount>();
+
         Debug.LogFormat("{0} entered immobilzed area...", collision.gameObject.name);
     }
 
@@ -38,7 +40,8 @@ public class Immobilzer : MonoBehaviour
             return;
         }
 
-
+        collider.GetComponent<Unit>().sm.changeState<DecreaseActionCount>();
+        
         Debug.LogFormat("{0} leaved immobilzed area...", collision.gameObject.name);
     }
 }

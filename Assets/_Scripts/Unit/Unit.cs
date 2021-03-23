@@ -43,7 +43,10 @@ namespace Bodzio2k.Unit
         [HideInInspector]
         public float willReceiveDamage = 0.0f;
         public float health = 100.0f;
+        public float totalHealth = 100.0f;
         public float damageMultiplier = 1.0f;
+
+        public GameObject healthBarGauge;
 
         private void Start()
         {
@@ -112,7 +115,7 @@ namespace Bodzio2k.Unit
         public void CreateRangeOverlay(OverlayType overlayType)
         {
             int range = overlayType == OverlayType.Move ? properties.moveRange : properties.attackRange;
-        
+
             List<Vector3> overlayPositions = GetOverlayPositions(overlayType, range);
 
             foreach (Vector3 position in overlayPositions)
@@ -158,7 +161,7 @@ namespace Bodzio2k.Unit
                 foreach (int v in ranges)
                 {
                     positions.Add(new Vector3(0, v, transform.position.z));
-                } 
+                }
             }
 
             if (overlayType == OverlayType.Attack)
@@ -212,7 +215,7 @@ namespace Bodzio2k.Unit
                     availablePostions.Add(new Vector3(pawnPostion.x, pawnPostion.y + -y));
                 }
             }
-            
+
             return availablePostions;
         }
 
@@ -233,7 +236,7 @@ namespace Bodzio2k.Unit
             bool moveIsValid = false;
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 mousePosition2D = new Vector2(mousePosition.x, mousePosition.y);
-            
+
             Vector3Int tilemapPosition = battleSystem.grid.WorldToCell(mousePosition);
 
             Tile tile = battleSystem.grid.GetTile<Tile>(tilemapPosition);
@@ -276,7 +279,7 @@ namespace Bodzio2k.Unit
         private bool IsTileOccupied(Vector2 postion)
         {
             LayerMask forbiddenMoves = battleSystem.playerOneLayerMask | battleSystem.playerTwoLayerMask;
-        
+
             if (!canStepOntoBlueTiles)
             {
                 forbiddenMoves = forbiddenMoves | battleSystem.blueTiles;

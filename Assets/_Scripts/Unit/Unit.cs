@@ -46,8 +46,12 @@ namespace Bodzio2k.Unit
         public float totalHealth = 100.0f;
         public float damageMultiplier = 1.0f;
 
-        public GameObject healthBarGauge;
+        [HideInInspector]
+        public GameObject healthBar;
 
+        [HideInInspector]
+        public GameObject healthBarGauge;
+        
         private void Start()
         {
             battleSystem = GameObject.Find("/BattleSystem").GetComponent<BattleSystem.BattleSystem>();
@@ -327,6 +331,16 @@ namespace Bodzio2k.Unit
         {
             moveRangeSpriteOverlay = Resources.Load<Sprite>("MovingRangeOverlay");
             attackRangeSpriteOverlay = Resources.Load<Sprite>("AimingRangeOverlay");
+        }
+
+        private void OnMouseExit()
+        {
+            healthBar.SetActive(false);
+        }
+
+        private void OnMouseEnter()
+        {
+            healthBar.SetActive(true);
         }
     }
 }

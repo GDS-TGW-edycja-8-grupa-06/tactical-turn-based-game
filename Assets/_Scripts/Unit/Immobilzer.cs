@@ -45,6 +45,7 @@ public class Immobilzer : MonoBehaviour
 
         immobilizedUnit = collider.GetComponent<Unit>();
         immobilizedUnit.actionsRemaining = 2;
+        immobilizedUnit.sm.changeState<Bodzio2k.Unit.Idle>();
 
         Debug.LogFormat("{0} leaved immobilzed area...", collision.gameObject.name);
     }

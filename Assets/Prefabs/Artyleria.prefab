@@ -128,7 +128,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8828446824051761408
 Transform:
   m_ObjectHideFlags: 0
@@ -222,7 +222,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6208209811599276655}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: -7, z: 0}
+  m_LocalPosition: {x: -2, y: -7, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 89055038636954953}
@@ -304,6 +304,7 @@ MonoBehaviour:
   health: 100
   totalHealth: 100
   damageMultiplier: 1
+  healthBar: {fileID: 3843735554219317437}
   healthBarGauge: {fileID: 601098869608376279}
 --- !u!61 &4736171780175840795
 BoxCollider2D:

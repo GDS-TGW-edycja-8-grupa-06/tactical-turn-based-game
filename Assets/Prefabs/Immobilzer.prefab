@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 759868179650533091}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9005923152275239770}
@@ -117,7 +117,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3295432737625587576
 Transform:
   m_ObjectHideFlags: 0
@@ -728,7 +728,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6208209811599276655}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: -7, z: 0}
+  m_LocalPosition: {x: -2, y: -7, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8677365614693745259}
@@ -811,6 +811,7 @@ MonoBehaviour:
   health: 100
   totalHealth: 100
   damageMultiplier: 1
+  healthBar: {fileID: 918490148806279575}
   healthBarGauge: {fileID: 4437130222725432536}
 --- !u!61 &-4414925825389332824
 BoxCollider2D:

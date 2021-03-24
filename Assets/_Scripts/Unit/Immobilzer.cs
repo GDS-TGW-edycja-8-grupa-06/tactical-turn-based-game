@@ -28,7 +28,9 @@ public class Immobilzer : MonoBehaviour
         immobilizedUnit = collider.GetComponent<Unit>();
         immobilizedUnit.sm.changeState<DecreaseActionCount>();
 
-        Debug.LogFormat("{0} entered immobilzed area...", collision.gameObject.name);
+        Debug.LogFormat("{0} entered immobilzed area; {1} action(s) remaining...", immobilizedUnit.name, immobilizedUnit.actionsRemaining);
+
+        immobilizedUnit.sm.changeState<Bodzio2k.Unit.Idle>();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -44,9 +46,10 @@ public class Immobilzer : MonoBehaviour
         }
 
         immobilizedUnit = collider.GetComponent<Unit>();
-        immobilizedUnit.actionsRemaining = 2;
-        immobilizedUnit.sm.changeState<Bodzio2k.Unit.Idle>();
+        immobilizedUnit.sm.changeState<DecreaseActionCount>();
 
-        Debug.LogFormat("{0} leaved immobilzed area...", collision.gameObject.name);
+        Debug.LogFormat("{0} leaved immobilzed area; {1} action(s) remaining...", immobilizedUnit.name, immobilizedUnit.actionsRemaining);
+
+        immobilizedUnit.sm.changeState<Bodzio2k.Unit.Idle>();
     }
 }

@@ -20,6 +20,11 @@ namespace Bodzio2k.Unit
                 _context.actionsRemaining = 2;
             }
 
+            if (_context.actionsRemaining == -1)
+            {
+                _context.battleSystem.sm.changeState<BattleSystem.ChangeSide>();
+            }
+
             try
             {
                 _context.battleSystem.sm.changeState<BattleSystem.Idle>();

@@ -65,6 +65,8 @@ namespace Bodzio2k.Unit
             sm.addState(new Inactive());
             sm.addState(new Die());
             sm.addState(new DecreaseActionCount());
+            sm.addState(new EnteringWinnigArea());
+            sm.addState(new LeavingWinnigArea());
 
             overlay = transform.Find("Overlay").gameObject;
 

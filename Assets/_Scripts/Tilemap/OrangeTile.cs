@@ -10,8 +10,15 @@ public class OrangeTile : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<Unit>(out unit))
         {
-            unit.battleSystem.sm.changeState<EnteringWinnigArea>();
-            //unit.sm.changeState<Unit.Idle>();
+            unit.sm.changeState<EnteringWinnigArea>();
+        };
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.TryGetComponent<Unit>(out unit))
+        {
+            unit.sm.changeState<LeavingWinnigArea>();
         };
     }
 }

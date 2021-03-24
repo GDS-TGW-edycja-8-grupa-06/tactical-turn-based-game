@@ -3,6 +3,7 @@ using UnityEngine;
 using Prime31.StateKit;
 using UnityEngine.Tilemaps;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Bodzio2k.BattleSystem
 {
@@ -40,12 +41,14 @@ namespace Bodzio2k.BattleSystem
         [HideInInspector]
         public int roundNumber = 1;
 
+        [HideInInspector]
+        public Dictionary<Unit.Unit, int> winningArea = new Dictionary<Unit.Unit, int>();
+
         private void Start()
         {
             sm = new SKStateMachine<BattleSystem>(this, new Idle());
             sm.addState(new MovingUnit());
             sm.addState(new ChangeSide());
-            sm.addState(new EnteringWinnigArea());
             sm.addState(new Aiming());
             sm.addState(new Inactive());
 

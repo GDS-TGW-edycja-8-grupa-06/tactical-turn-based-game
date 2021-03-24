@@ -17,6 +17,8 @@ namespace Bodzio2k.BattleSystem
         {
             base.begin();
 
+            _context.CheckWinningCondtions();
+
             GamePhase currentPhase = _context.gamePhase;
             GamePhase newPhase = currentPhase == GamePhase.PlayerOne ? GamePhase.PlayerTwo : GamePhase.PlayerOne;
 

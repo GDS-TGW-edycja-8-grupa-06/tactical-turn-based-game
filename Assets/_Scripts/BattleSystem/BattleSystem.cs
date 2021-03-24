@@ -44,6 +44,9 @@ namespace Bodzio2k.BattleSystem
         [HideInInspector]
         public Dictionary<Unit.Unit, int> winningArea = new Dictionary<Unit.Unit, int>();
 
+        [SerializeField]
+        public int dominationRoundsCount = 3;
+
         private void Start()
         {
             sm = new SKStateMachine<BattleSystem>(this, new Idle());
@@ -110,6 +113,11 @@ namespace Bodzio2k.BattleSystem
                     ChangeSprite(childGo);
                 }
             }
+        }
+
+        public void CheckWinningCondtions()
+        {
+            return;
         }
     }
 }

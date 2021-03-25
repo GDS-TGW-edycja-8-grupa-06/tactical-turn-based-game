@@ -42,7 +42,7 @@ namespace Bodzio2k.BattleSystem
         public int roundNumber = 1;
 
         [HideInInspector]
-        public Dictionary<Unit.Unit, int> winningArea = new Dictionary<Unit.Unit, int>();
+        public List<Dictionary<Unit.Unit, int>> winningArea = new List<Dictionary<Unit.Unit, int>>();
 
         [SerializeField]
         public int dominationRoundsCount = 3;
@@ -117,7 +117,10 @@ namespace Bodzio2k.BattleSystem
 
         public void CheckWinningCondtions()
         {
-            return;
+            if (winningArea.Count == 1)
+            {
+                return;
+            }
         }
     }
 }

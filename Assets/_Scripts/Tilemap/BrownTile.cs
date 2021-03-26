@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Bodzio2k.Unit;
+using Bodzio2k.BattleSystem;
 
 namespace Bodzio2k.Tiles
 {
@@ -13,7 +14,8 @@ namespace Bodzio2k.Tiles
             {
                 Debug.LogFormat("{0} entered slowing area...", collision.gameObject.name);
 
-                unit.sm.changeState<DisableAttack>();
+                //unit.sm.changeState<DisableAttack>();
+                //unit.battleSystem.sm.changeState<ChangeSide>();
             };
         }
 

@@ -16,9 +16,7 @@ namespace Bodzio2k.BattleSystem
         public override void begin()
         {
             base.begin();
-
-            _context.CheckWinningCondtions();
-
+            
             GamePhase currentPhase = _context.gamePhase;
             GamePhase newPhase = currentPhase == GamePhase.PlayerOne ? GamePhase.PlayerTwo : GamePhase.PlayerOne;
 
@@ -44,6 +42,13 @@ namespace Bodzio2k.BattleSystem
         private void ResetUnitActions()
         {
             unit.actionsRemaining = 2;
+        }
+
+        public override void end()
+        {
+            base.end();
+
+            _context.CheckWinningCondtions();
         }
     }
 }

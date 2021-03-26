@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Bodzio2k.Unit;
 
-namespace Bodzio2k
+namespace Bodzio2k.Tiles
 {
     public class BrownTile : MonoBehaviour
     {

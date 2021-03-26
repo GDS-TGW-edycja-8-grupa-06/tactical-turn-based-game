@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Bodzio2k
+namespace Bodzio2k.Tiles
 {
     public class GenericTile : MonoBehaviour
     {

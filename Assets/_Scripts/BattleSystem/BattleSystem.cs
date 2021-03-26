@@ -4,6 +4,7 @@ using Prime31.StateKit;
 using UnityEngine.Tilemaps;
 using System.Linq;
 using System.Collections.Generic;
+using Bodzio2k.Tiles;
 
 namespace Bodzio2k.BattleSystem
 {

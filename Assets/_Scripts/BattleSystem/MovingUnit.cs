@@ -61,10 +61,8 @@ namespace Bodzio2k.BattleSystem
                 selectedUnit.transform.position = Vector3.Lerp(startPostion, targetPosition, 10f * Time.deltaTime);
                 rb.MovePosition(selectedUnit.transform.position);
 
-                //if (selectedUnit.transform.position == targetPosition)
-                //{
-                //    targetPosition = Vector3.zero;
-                //}
+                unit.HideRangeOverlay();
+                unit.HideContextMenu();
             }
         }
     
@@ -78,14 +76,6 @@ namespace Bodzio2k.BattleSystem
             canStepOntoBlueTiles = Array.Exists(unit.properties.tags, tag => tag == Tag.CanStepOntoBlueTiles);
 
             unit.CreateRangeOverlay(OverlayType.Move);
-        }
-
-        public override void end()
-        {
-            base.end();
-
-            unit.HideRangeOverlay();
-            unit.HideContextMenu();
         }
     }
 }

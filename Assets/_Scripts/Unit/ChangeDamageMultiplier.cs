@@ -10,8 +10,6 @@ namespace Bodzio2k.Unit
             base.begin();
 
             _context.damageMultiplier = _context.damageMultiplier == 1.0f ? 0.5f : 1.0f;
-
-            _context.sm.changeState<Idle>();
         }
 
         public override void end()

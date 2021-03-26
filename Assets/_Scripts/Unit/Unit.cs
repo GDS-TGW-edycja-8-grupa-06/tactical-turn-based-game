@@ -228,8 +228,8 @@ namespace Bodzio2k.Unit
         public bool IsActionWithinRange(Action action, Vector3 targetPosition)
         {
             List<Vector3> availablePostions = GetAvailablePositions(Action.Move);
-
-            if (availablePostions.Contains(targetPosition))
+            
+            if (availablePostions.Any(postion => postion == targetPosition))
             {
                 return true;
             }

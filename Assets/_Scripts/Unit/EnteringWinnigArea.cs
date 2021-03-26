@@ -23,7 +23,7 @@ namespace Bodzio2k.BattleSystem
 
             _context.battleSystem.winningArea.Add(enteringUnit);
 
-            _context.sm.changeState<Unit.Idle>();
+            //_context.sm.changeState<Unit.Idle>();
 
             Debug.LogFormat("{0} entered winning area on round #{1}...", _context.name, roundNumber);
         }

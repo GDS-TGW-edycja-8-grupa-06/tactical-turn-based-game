@@ -14,6 +14,7 @@ namespace Bodzio2k.BattleSystem
         private Rigidbody2D rb;
         private bool moveIsValid = false;
         private bool moveIsWithinRange = false;
+        private bool didMove;
 
         public override void update(float deltaTime)
         {
@@ -21,16 +22,18 @@ namespace Bodzio2k.BattleSystem
             {
                 moveIsValid = unit.IsMoveValid(ref targetPosition);
                 moveIsWithinRange = unit.IsActionWithinRange(Unit.Action.Move, targetPosition);
+                didMove = false;
+
+                Debug.LogFormat("{0} wants to move from {1} to {2}...", unit.gameObject.name, _context.selectedUnit.transform.position, targetPosition);
 
                 return;
             }
 
             Move();
 
-            if (_context.selectedUnit.transform.position == targetPosition)
+            //if (_context.selectedUnit.transform.position == targetPosition)
+            if (didMove)
             {
-                Debug.LogFormat("{0} did move to {1}...", _context.selectedUnit.name, targetPosition);
-
                 unit.actionsRemaining--;
                 unit.battleSystem.touchedUnit = unit.transform.gameObject;
 
@@ -44,7 +47,9 @@ namespace Bodzio2k.BattleSystem
                     unit.sm.changeState<Unit.Idle>();
                 }
 
-                targetPosition = Vector3.zero;
+                targetPosition = Vector3.zero; targetPosition = Vector3.zero;
+
+                didMove = false;
             }
         }
 
@@ -58,14 +63,20 @@ namespace Bodzio2k.BattleSystem
 
             if (moveIsValid && moveIsWithinRange && (targetPosition != Vector3.zero))
             {
-                selectedUnit.transform.position = Vector3.Lerp(startPostion, targetPosition, 10f * Time.deltaTime);
-                rb.MovePosition(selectedUnit.transform.position);
+                //selectedUnit.transform.position = Vector3.Lerp(startPostion, targetPosition, 10f * Time.deltaTime);
+                rb.MovePosition(targetPosition);
 
                 unit.HideRangeOverlay();
                 unit.HideContextMenu();
+
+                Debug.LogFormat("{0} did move to {1}...", _context.selectedUnit.name, targetPosition);
+
+                didMove = true;
+
+                return;
             }
         }
-    
+
         public override void begin()
         {
             base.begin();

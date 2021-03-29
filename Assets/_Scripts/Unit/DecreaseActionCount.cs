@@ -14,6 +14,8 @@ namespace Bodzio2k.Unit
             unit = _context.GetComponent<Unit>();
 
             unit.actionsRemaining = -1;
+
+            //unit.sm.changeState<Bodzio2k.Unit.Idle>();
         }
 
         public override void update(float deltaTime)

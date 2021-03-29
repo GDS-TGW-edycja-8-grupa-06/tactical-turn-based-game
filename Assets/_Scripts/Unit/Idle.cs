@@ -20,9 +20,10 @@ namespace Bodzio2k.Unit
                 _context.actionsRemaining = 2;
             }
 
-            if (_context.actionsRemaining == -1)
+            if (_context.isImmobilized)
             {
-                _context.battleSystem.sm.changeState<BattleSystem.ChangeSide>();
+                _context.actionsRemaining = 0;
+
             }
 
             try

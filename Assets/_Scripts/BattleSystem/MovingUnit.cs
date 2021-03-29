@@ -31,15 +31,15 @@ namespace Bodzio2k.BattleSystem
 
             Move();
 
-            //if (_context.selectedUnit.transform.position == targetPosition)
             if (didMove)
             {
                 unit.actionsRemaining--;
                 unit.battleSystem.touchedUnit = unit.transform.gameObject;
 
-                if (unit.actionsRemaining == 0)
+                if (unit.actionsRemaining == 0 || unit.isImmobilized)
                 {
                     unit.sm.changeState<Unit.Inactive>();
+                    unit.isImmobilized = false;
                     _machine.changeState<ChangeSide>();
                 }
                 else
@@ -63,7 +63,6 @@ namespace Bodzio2k.BattleSystem
 
             if (moveIsValid && moveIsWithinRange && (targetPosition != Vector3.zero))
             {
-                //selectedUnit.transform.position = Vector3.Lerp(startPostion, targetPosition, 10f * Time.deltaTime);
                 rb.MovePosition(targetPosition);
 
                 unit.HideRangeOverlay();

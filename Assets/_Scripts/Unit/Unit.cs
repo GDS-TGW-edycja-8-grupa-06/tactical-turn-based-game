@@ -42,13 +42,21 @@ namespace Bodzio2k.Unit
 
         [HideInInspector]
         public float willReceiveDamage = 0.0f;
+
+        [HideInInspector]
         public float health = 100.0f;
+
+        [HideInInspector]
         public float totalHealth = 100.0f;
+
+        [HideInInspector]
         public float damageMultiplier = 1.0f;
 
         [HideInInspector]
         public GameObject healthBar;
 
+        [HideInInspector]
+        public bool isImmobilized = false;
         [HideInInspector]
         public GameObject healthBarGauge;
         

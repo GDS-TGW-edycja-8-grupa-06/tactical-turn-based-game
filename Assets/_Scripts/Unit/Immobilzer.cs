@@ -26,11 +26,16 @@ public class Immobilzer : MonoBehaviour
         }
 
         immobilizedUnit = collider.GetComponent<Unit>();
-        immobilizedUnit.sm.changeState<DecreaseActionCount>();
+        immobilizedUnit.isImmobilized = true;
 
-        Debug.LogFormat("{0} entered immobilzed area; {1} action(s) remaining...", immobilizedUnit.name, immobilizedUnit.actionsRemaining);
+        Debug.LogFormat("{0} entered immobilzed area...", immobilizedUnit.name);
 
-        immobilizedUnit.sm.changeState<Bodzio2k.Unit.Idle>();
+        if (collider == immobilizedUnit.battleSystem.selectedUnit)
+        {
+            Debug.Log("Entered immobilzed area and changing side...");
+
+            immobilizedUnit.battleSystem.sm.changeState<ChangeSide>();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -46,10 +51,15 @@ public class Immobilzer : MonoBehaviour
         }
 
         immobilizedUnit = collider.GetComponent<Unit>();
-        immobilizedUnit.sm.changeState<DecreaseActionCount>();
+        immobilizedUnit.isImmobilized = false;
 
-        Debug.LogFormat("{0} leaved immobilzed area; {1} action(s) remaining...", immobilizedUnit.name, immobilizedUnit.actionsRemaining);
+        Debug.LogFormat("{0} leaved immobilzed area...", immobilizedUnit.name);
+        
+        if (collider == immobilizedUnit.battleSystem.selectedUnit)
+        {
+            Debug.Log("Leaving immobilzed area and changing side...");
 
-        immobilizedUnit.sm.changeState<Bodzio2k.Unit.Idle>();
+            immobilizedUnit.battleSystem.sm.changeState<ChangeSide>();
+        }
     }
 }

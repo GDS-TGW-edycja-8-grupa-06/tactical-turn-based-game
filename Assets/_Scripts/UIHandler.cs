@@ -9,6 +9,7 @@ namespace Bodzio2k.UI
     {
         public static event EventHandler OnSwitchMode;
         public static event EventHandler OnNewGame;
+        public static event EventHandler OnQuit;
 
         public void OnSwitchModeClicked()
         {
@@ -18,6 +19,11 @@ namespace Bodzio2k.UI
         public void OnNewGameClicked()
         {
             OnNewGame?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void OnQuickClicked()
+        {
+            OnQuit?.Invoke(this, EventArgs.Empty);
         }
     }
 }

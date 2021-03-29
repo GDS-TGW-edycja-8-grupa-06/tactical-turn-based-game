@@ -63,6 +63,12 @@ namespace Bodzio2k.BattleSystem
 
             UIHandler.OnSwitchMode += UIHandler_OnSwitchMode;
             UIHandler.OnNewGame += UIHandler_OnNewGame;
+            UIHandler.OnQuit += UIHandler_OnQuit;
+        }
+
+        private void UIHandler_OnQuit(object sender, EventArgs e)
+        {
+            Application.Quit();
         }
 
         private void UIHandler_OnNewGame(object sender, EventArgs e)

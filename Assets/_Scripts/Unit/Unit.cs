@@ -56,10 +56,13 @@ namespace Bodzio2k.Unit
         public GameObject healthBar;
 
         [HideInInspector]
-        public bool isImmobilized = false;
-        [HideInInspector]
         public GameObject healthBarGauge;
-        
+
+        [HideInInspector]
+        public bool isImmobilized = false;
+
+        private SpriteRenderer sr;
+
         private void Start()
         {
             battleSystem = GameObject.Find("/BattleSystem").GetComponent<BattleSystem.BattleSystem>();
@@ -79,6 +82,8 @@ namespace Bodzio2k.Unit
             overlay = transform.Find("Overlay").gameObject;
 
             canStepOntoBlueTiles = Array.Exists(properties.tags, tag => tag == Tag.CanStepOntoBlueTiles);
+
+            sr = GetComponent<SpriteRenderer>();
 
             LoadSprites();
 
@@ -341,6 +346,13 @@ namespace Bodzio2k.Unit
         {
             moveRangeSpriteOverlay = Resources.Load<Sprite>("MovingRangeOverlay");
             attackRangeSpriteOverlay = Resources.Load<Sprite>("AimingRangeOverlay");
+
+            string gameModeDir = battleSystem.gameMode == GameMode.DesignerMode ? "DesignerMode" : "ReleaseMode";
+            string unitFilename = gameObject.name;
+
+            string path = $@"Units\{gameModeDir}\{unitFilename}";
+            
+            sr.sprite = Resources.Load<Sprite>(path);
         }
 
         private void OnMouseExit()

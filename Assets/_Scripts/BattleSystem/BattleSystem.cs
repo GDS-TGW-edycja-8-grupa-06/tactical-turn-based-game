@@ -90,7 +90,14 @@ namespace Bodzio2k.BattleSystem
             {
                 if (go.TryGetComponent<Bodzio2k.Unit.Unit>(out unit))
                 {
-                    sr.sprite = unit.properties.sprites[(int) gameMode];
+                    string gameModeDir = gameMode == GameMode.DesignerMode ? "DesignerMode" : "ReleaseMode";
+                    string unitFilename = unit.gameObject.name;
+
+                    string path = $@"Units\{gameModeDir}\{unitFilename}";
+
+                    Debug.LogFormat("Loading {0}...", path);
+
+                    sr.sprite = Resources.Load<Sprite>(path);
 
                     return;
                 }

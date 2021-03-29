@@ -19,9 +19,6 @@ public class Properties : ScriptableObject
     [SerializeField]
     public int attackRange = 0;
 
-    [SerializeField]
-    public Sprite[] sprites;
-
     [HideInInspector]
     public float damageMultiplier = 1.0f;
 }

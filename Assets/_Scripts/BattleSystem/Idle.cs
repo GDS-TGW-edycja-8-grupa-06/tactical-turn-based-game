@@ -15,7 +15,7 @@ namespace Bodzio2k.BattleSystem
                 Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector2 mousePosition2D = new Vector2(mousePosition.x, mousePosition.y);
 
-                _context.cameraFocus.transform.position = mousePosition;
+                //_context.cameraFocus.transform.position = mousePosition;
 
                 RaycastHit2D hit = Physics2D.Raycast(mousePosition2D, Vector2.zero, Mathf.Infinity, playerLayerMask);
 

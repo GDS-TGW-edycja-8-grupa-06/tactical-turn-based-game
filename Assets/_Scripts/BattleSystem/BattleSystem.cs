@@ -5,6 +5,8 @@ using UnityEngine.Tilemaps;
 using System.Linq;
 using System.Collections.Generic;
 using Bodzio2k.Tiles;
+using Bodzio2k.UI;
+using UnityEngine.UI;
 
 namespace Bodzio2k.BattleSystem
 {
@@ -48,6 +50,9 @@ namespace Bodzio2k.BattleSystem
         [SerializeField]
         public int dominationRoundsCount = 3;
 
+        [SerializeField]
+        public Canvas mainMenu;
+
         private void Start()
         {
             sm = new SKStateMachine<BattleSystem>(this, new Idle());
@@ -57,6 +62,12 @@ namespace Bodzio2k.BattleSystem
             sm.addState(new Inactive());
 
             UIHandler.OnSwitchMode += UIHandler_OnSwitchMode;
+            UIHandler.OnNewGame += UIHandler_OnNewGame;
+        }
+
+        private void UIHandler_OnNewGame(object sender, EventArgs e)
+        {
+            mainMenu.gameObject.SetActive(false);
         }
 
         void Update()
@@ -130,5 +141,6 @@ namespace Bodzio2k.BattleSystem
                 return;
             }
         }
+
     }
 }

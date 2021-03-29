@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 19225301}
   - component: {fileID: 19225300}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: WelcomeTo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17548,6 +17548,7 @@ MonoBehaviour:
   cameraFocus: {fileID: 209838427}
   roundNumber: 1
   dominationRoundsCount: 3
+  mainMenu: {fileID: 924904955}
 --- !u!4 &306917737
 Transform:
   m_ObjectHideFlags: 0
@@ -17575,7 +17576,7 @@ GameObject:
   - component: {fileID: 363124510}
   - component: {fileID: 363124509}
   m_Layer: 0
-  m_Name: Button (1)
+  m_Name: HowToPlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17739,7 +17740,7 @@ GameObject:
   - component: {fileID: 443389330}
   - component: {fileID: 443389329}
   m_Layer: 0
-  m_Name: Button (2)
+  m_Name: Quit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18218,7 +18219,7 @@ GameObject:
   - component: {fileID: 755903017}
   - component: {fileID: 755903016}
   m_Layer: 0
-  m_Name: Button
+  m_Name: NewGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18286,7 +18287,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 755903017}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1659767398}
+        m_MethodName: OnNewGameClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &755903017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18514,7 +18526,7 @@ GameObject:
   - component: {fileID: 924904954}
   - component: {fileID: 924904953}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: MainMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18617,7 +18629,7 @@ GameObject:
   - component: {fileID: 1181061298}
   - component: {fileID: 1181061297}
   m_Layer: 0
-  m_Name: Text (TMP) (1)
+  m_Name: MadCemetary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19199,7 +19211,7 @@ GameObject:
   - component: {fileID: 1766631457}
   - component: {fileID: 1766631456}
   m_Layer: 5
-  m_Name: Button
+  m_Name: SwitchMode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19462,7 +19474,7 @@ GameObject:
   - component: {fileID: 2034873674}
   - component: {fileID: 2034873673}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

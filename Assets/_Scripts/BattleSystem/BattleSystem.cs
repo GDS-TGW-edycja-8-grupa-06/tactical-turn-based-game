@@ -21,6 +21,8 @@ namespace Bodzio2k.BattleSystem
 
         [HideInInspector]
         public GameObject selectedUnit;
+
+        [HideInInspector]
         public GameObject touchedUnit;
 
         [HideInInspector]
@@ -53,6 +55,9 @@ namespace Bodzio2k.BattleSystem
         [SerializeField]
         public Canvas mainMenu;
 
+        [SerializeField]
+        public Canvas canvas;
+
         private void Start()
         {
             sm = new SKStateMachine<BattleSystem>(this, new Idle());
@@ -60,6 +65,7 @@ namespace Bodzio2k.BattleSystem
             sm.addState(new ChangeSide());
             sm.addState(new Aiming());
             sm.addState(new Inactive());
+            sm.addState(new NewGame());
 
             UIHandler.OnSwitchMode += UIHandler_OnSwitchMode;
             UIHandler.OnNewGame += UIHandler_OnNewGame;
@@ -73,7 +79,7 @@ namespace Bodzio2k.BattleSystem
 
         private void UIHandler_OnNewGame(object sender, EventArgs e)
         {
-            mainMenu.gameObject.SetActive(false);
+            sm.changeState<NewGame>();
         }
 
         void Update()

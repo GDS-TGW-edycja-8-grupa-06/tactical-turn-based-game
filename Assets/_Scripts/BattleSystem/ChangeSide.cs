@@ -9,6 +9,7 @@ namespace Bodzio2k.BattleSystem
     {
         private Unit.Unit unit;
         private GameObject roundAnnouncer;
+        private GameObject roundNumber;
 
         public override void update(float deltaTime)
         {
@@ -40,7 +41,7 @@ namespace Bodzio2k.BattleSystem
                 Debug.LogFormat("Round {0} started...", _context.roundNumber);
             }
 
-            ShowRoundAnnouncer();
+            UpdateUI();
         }
 
         private void ResetUnitActions()
@@ -55,13 +56,17 @@ namespace Bodzio2k.BattleSystem
             _context.CheckWinningCondtions();
         }
 
-        private void ShowRoundAnnouncer()
+        private void UpdateUI()
         {
             roundAnnouncer = GameObject.Find("/UI/Canvas/RoundAnnouncer");
             roundAnnouncer.SetActive(true);
 
             string text = _context.gamePhase == GamePhase.PlayerOne ? "player one" : "player two";
             roundAnnouncer.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(text);
+
+            roundNumber = GameObject.Find("/UI/Canvas/RoundNumber");
+            text = $"round {_context.roundNumber}";
+            roundNumber.GetComponent<TextMeshProUGUI>().SetText(text);
 
             _context.StartCoroutine(HideRoundAnnouncer());
         }

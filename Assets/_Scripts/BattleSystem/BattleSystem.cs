@@ -73,6 +73,7 @@ namespace Bodzio2k.BattleSystem
             sm.addState(new Aiming());
             sm.addState(new Inactive());
             sm.addState(new NewGame());
+            sm.addState(new GameOver());
 
             UIHandler.OnSwitchMode += UIHandler_OnSwitchMode;
             UIHandler.OnNewGame += UIHandler_OnNewGame;

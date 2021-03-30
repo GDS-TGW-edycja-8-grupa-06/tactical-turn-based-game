@@ -23,7 +23,7 @@ namespace Bodzio2k.BattleSystem
             roundAnnouncer = GameObject.Find("/UI/Canvas/RoundAnnouncer");
             roundAnnouncer.SetActive(true);
 
-            //_context.StartCoroutine(HideRoundAnnouncer());
+            _context.StartCoroutine(HideRoundAnnouncer());
 
             _context.sm.changeState<Idle>();
         }
@@ -36,8 +36,6 @@ namespace Bodzio2k.BattleSystem
         IEnumerator HideRoundAnnouncer()
         {
             yield return new WaitForSeconds(2f);
-
-            GameObject roundAnnouncer = GameObject.Find("/UI/Canvas/RoundAnnouncer");
 
             roundAnnouncer.SetActive(false);
         }

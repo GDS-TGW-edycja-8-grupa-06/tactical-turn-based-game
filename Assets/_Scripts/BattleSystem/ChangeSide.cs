@@ -1,12 +1,14 @@
 ﻿using Prime31.StateKit;
-using Bodzio2k.Unit;
 using UnityEngine;
+using System.Collections;
+using TMPro;
 
 namespace Bodzio2k.BattleSystem
 {
     public class ChangeSide : SKState<BattleSystem>
     {
         private Unit.Unit unit;
+        private GameObject roundAnnouncer;
 
         public override void update(float deltaTime)
         {
@@ -37,6 +39,8 @@ namespace Bodzio2k.BattleSystem
 
                 Debug.LogFormat("Round {0} started...", _context.roundNumber);
             }
+
+            ShowRoundAnnouncer();
         }
 
         private void ResetUnitActions()
@@ -49,6 +53,24 @@ namespace Bodzio2k.BattleSystem
             base.end();
 
             _context.CheckWinningCondtions();
+        }
+
+        private void ShowRoundAnnouncer()
+        {
+            roundAnnouncer = GameObject.Find("/UI/Canvas/RoundAnnouncer");
+            roundAnnouncer.SetActive(true);
+
+            string text = _context.gamePhase == GamePhase.PlayerOne ? "player one" : "player two";
+            roundAnnouncer.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(text);
+
+            _context.StartCoroutine(HideRoundAnnouncer());
+        }
+
+        IEnumerator HideRoundAnnouncer()
+        {
+            yield return new WaitForSeconds(2f);
+
+            roundAnnouncer.SetActive(false);
         }
     }
 }

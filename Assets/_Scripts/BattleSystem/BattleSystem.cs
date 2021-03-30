@@ -53,7 +53,7 @@ namespace Bodzio2k.BattleSystem
         public int playerOneUnitsRemaining = 5;
 
         [HideInInspector]
-        public int playerTwoUnitsRemaining = 5;
+        public int playerTwoUnitsRemaining = 1;
 
         [HideInInspector]
         public List<Dictionary<Unit.Unit, int>> winningArea = new List<Dictionary<Unit.Unit, int>>();
@@ -67,13 +67,15 @@ namespace Bodzio2k.BattleSystem
 
         private void Start()
         {
-            sm = new SKStateMachine<BattleSystem>(this, new Idle());
+            sm = new SKStateMachine<BattleSystem>(this, new ShowingMainMenu());
+            sm.addState(new Idle());
             sm.addState(new MovingUnit());
             sm.addState(new ChangeSide());
             sm.addState(new Aiming());
             sm.addState(new Inactive());
             sm.addState(new NewGame());
             sm.addState(new GameOver());
+            //sm.addState(new ShowingMainMenu());
 
             UIHandler.OnSwitchMode += UIHandler_OnSwitchMode;
             UIHandler.OnNewGame += UIHandler_OnNewGame;

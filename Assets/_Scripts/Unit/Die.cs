@@ -1,4 +1,5 @@
-﻿using Prime31.StateKit;
+﻿using Bodzio2k.BattleSystem;
+using Prime31.StateKit;
 
 namespace Bodzio2k.Unit
 {
@@ -9,6 +10,11 @@ namespace Bodzio2k.Unit
             base.begin();
 
             _context.GetComponent<Unit>().Die();
+
+            if (1 == 1 || _context.battleSystem.playerOneUnitsRemaining == 0 || _context.battleSystem.playerTwoUnitsRemaining == 0)
+            {
+                _context.battleSystem.sm.changeState<GameOver>();
+            }
         }
 
         public override void end()

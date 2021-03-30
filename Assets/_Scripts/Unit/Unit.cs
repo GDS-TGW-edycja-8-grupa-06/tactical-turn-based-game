@@ -338,7 +338,7 @@ namespace Bodzio2k.Unit
             GameObject label;
             int unitsRemaining;
             string playerSide;
-
+            
             if (side == Side.PlayerOne)
             {
                 battleSystem.playerOneUnitsRemaining--;
@@ -355,7 +355,7 @@ namespace Bodzio2k.Unit
             label = GameObject.Find($"/UI/Canvas/{playerSide}UnitsRemaining");
             label.GetComponent<TextMeshProUGUI>().SetText($"units remaining {unitsRemaining}");
 
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
 
         private void Update()

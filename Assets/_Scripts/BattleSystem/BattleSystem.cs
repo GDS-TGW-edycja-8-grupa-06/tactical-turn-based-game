@@ -46,12 +46,19 @@ namespace Bodzio2k.BattleSystem
         [HideInInspector]
         public int roundNumber = 1;
 
-        [HideInInspector]
-        public List<Dictionary<Unit.Unit, int>> winningArea = new List<Dictionary<Unit.Unit, int>>();
-
         [SerializeField]
         public int dominationRoundsCount = 3;
 
+        [HideInInspector]
+        public int playerOneUnitsRemaining = 5;
+
+        [HideInInspector]
+        public int playerTwoUnitsRemaining = 5;
+
+        [HideInInspector]
+        public List<Dictionary<Unit.Unit, int>> winningArea = new List<Dictionary<Unit.Unit, int>>();
+
+        
         [SerializeField]
         public Canvas mainMenu;
 

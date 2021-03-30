@@ -5,6 +5,7 @@ using System.Linq;
 using System;
 using UnityEngine.Tilemaps;
 using Bodzio2k.BattleSystem;
+using TMPro;
 
 namespace Bodzio2k.Unit
 {
@@ -334,6 +335,26 @@ namespace Bodzio2k.Unit
 
         public void Die()
         {
+            GameObject label;
+            int unitsRemaining;
+            string playerSide;
+
+            if (side == Side.PlayerOne)
+            {
+                battleSystem.playerOneUnitsRemaining--;
+                unitsRemaining = battleSystem.playerOneUnitsRemaining;
+                playerSide = "PlayerOne";
+            }
+            else
+            {
+                battleSystem.playerTwoUnitsRemaining--;
+                unitsRemaining = battleSystem.playerTwoUnitsRemaining;
+                playerSide = "PlayerTwo";
+            }
+
+            label = GameObject.Find($"/UI/Canvas/{playerSide}UnitsRemaining");
+            label.GetComponent<TextMeshProUGUI>().SetText($"units remaining {unitsRemaining}");
+
             Destroy(this.gameObject);
         }
 

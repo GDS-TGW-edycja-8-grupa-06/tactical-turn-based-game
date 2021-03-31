@@ -11,7 +11,7 @@ namespace Bodzio2k.Unit
 
             _context.GetComponent<Unit>().Die();
 
-            if (1 == 1 || _context.battleSystem.playerOneUnitsRemaining == 0 || _context.battleSystem.playerTwoUnitsRemaining == 0)
+            if (_context.battleSystem.playerOneUnitsRemaining == 0 || _context.battleSystem.playerTwoUnitsRemaining == 0)
             {
                 _context.battleSystem.sm.changeState<GameOver>();
             }

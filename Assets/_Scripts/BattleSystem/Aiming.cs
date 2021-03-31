@@ -36,7 +36,11 @@ namespace Bodzio2k.BattleSystem
                     if (aimingUnit.actionsRemaining == 0)
                     {
                         aimingUnit.sm.changeState<Unit.Inactive>();
-                        _machine.changeState<ChangeSide>();
+
+                        if (!(_machine.currentState is GameOver))
+                        {
+                            _machine.changeState<ChangeSide>();
+                        }
                     }
                     else
                     {

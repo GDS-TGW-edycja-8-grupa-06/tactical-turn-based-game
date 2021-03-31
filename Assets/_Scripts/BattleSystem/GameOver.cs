@@ -18,7 +18,10 @@ namespace Bodzio2k.BattleSystem
 
         public override void update(float deltaTime)
         {
-            return;
+            if (Input.anyKey)
+            {
+                _machine.changeState<ShowingMainMenu>();
+            }
         }
 
         private void UpdateUI()

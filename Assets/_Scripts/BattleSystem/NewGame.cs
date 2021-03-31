@@ -28,11 +28,6 @@ namespace Bodzio2k.BattleSystem
             _context.sm.changeState<Idle>();
         }
 
-        public override void end()
-        {
-            base.end();
-        }
-
         IEnumerator HideRoundAnnouncer()
         {
             yield return new WaitForSeconds(2f);

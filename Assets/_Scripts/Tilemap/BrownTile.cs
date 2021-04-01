@@ -14,7 +14,15 @@ namespace Bodzio2k.Tiles
             {
                 Debug.LogFormat("{0} entered slowing area...", collision.gameObject.name);
 
-                unit.battleSystem.sm.changeState<ChangeSide>();
+                
+                unit.battleSystem.selectedUnit = unit.gameObject;
+
+                if (unit.actionsRemaining < 2)
+                {
+                    unit.battleSystem.sm.changeState<ChangeSide>();
+                }
+
+                return;
             };
         }
 

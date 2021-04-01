@@ -13,6 +13,7 @@ namespace Bodzio2k.Unit
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 _context.HideContextMenu();
+                _context.HideRangeOverlay();
 
                 _context.sm.changeState<Idle>();
                 _context.battleSystem.GetComponent<BattleSystem.BattleSystem>().sm.changeState<BattleSystem.Idle>();

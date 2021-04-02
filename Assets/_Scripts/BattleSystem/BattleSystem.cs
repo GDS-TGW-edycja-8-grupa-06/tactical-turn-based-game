@@ -32,7 +32,10 @@ namespace Bodzio2k.BattleSystem
         public Tilemap grid;
 
         [HideInInspector]
-        public GamePhase gamePhase = GamePhase.PlayerOne;
+        public GamePhase gamePhase;
+
+        [HideInInspector]
+        public GamePhase whoStarts;
 
         [HideInInspector]
         public GameMode gameMode = GameMode.ReleaseMode;

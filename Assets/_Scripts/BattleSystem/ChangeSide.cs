@@ -36,7 +36,7 @@ namespace Bodzio2k.BattleSystem
 
             _machine.changeState<Idle>();
 
-            if (_context.gamePhase == GamePhase.PlayerOne)
+            if (_context.gamePhase == _context.whoStarts)
             {
                 _context.roundNumber++;
 

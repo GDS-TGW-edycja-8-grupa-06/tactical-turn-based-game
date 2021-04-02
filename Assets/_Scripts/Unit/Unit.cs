@@ -88,6 +88,8 @@ namespace Bodzio2k.Unit
 
             LoadSprites();
 
+            health = properties.health;
+
             return;
         }
 

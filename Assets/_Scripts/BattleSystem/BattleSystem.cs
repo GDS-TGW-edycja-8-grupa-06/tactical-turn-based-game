@@ -78,11 +78,17 @@ namespace Bodzio2k.BattleSystem
             sm.addState(new Inactive());
             sm.addState(new NewGame());
             sm.addState(new GameOver());
-            //sm.addState(new ShowingMainMenu());
+            sm.addState(new ShowingHowToPlay());
 
             UIHandler.OnSwitchMode += UIHandler_OnSwitchMode;
             UIHandler.OnNewGame += UIHandler_OnNewGame;
             UIHandler.OnQuit += UIHandler_OnQuit;
+            UIHandler.OnHowToPlay += UIHandler_OnHowToPlay;
+        }
+
+        private void UIHandler_OnHowToPlay(object sender, EventArgs e)
+        {
+            sm.changeState<ShowingHowToPlay>();
         }
 
         private void UIHandler_OnQuit(object sender, EventArgs e)

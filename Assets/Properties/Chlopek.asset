@@ -12,12 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24e9975dbf5acc94fbb6bf35d0e5f6d6, type: 3}
   m_Name: Chlopek
   m_EditorClassIdentifier: 
-  health: 100
+  health: 50
   tags: 
-  damageDealt: 10
-  moveRange: 1
+  damageDealt: 25
+  moveRange: 2
   attackRange: 1
-  sprites:
-  - {fileID: 21300000, guid: 277a378d126b2bd49ad204f7f84c7cf6, type: 3}
-  - {fileID: 21300000, guid: 5669e11d4686f9a44b2dddc7aee4b6a4, type: 3}
   damageMultiplier: 1

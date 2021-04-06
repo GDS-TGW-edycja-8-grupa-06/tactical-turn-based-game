@@ -167,10 +167,9 @@ namespace Bodzio2k.BattleSystem
 
         public void CheckWinningCondtions()
         {
-            if (winningArea.Count == 1)
-            {
-                return;
-            }
+            Debug.LogFormat("Checking winning conditions after round #{0}...", roundNumber);
+
+            return;
         }
 
     }

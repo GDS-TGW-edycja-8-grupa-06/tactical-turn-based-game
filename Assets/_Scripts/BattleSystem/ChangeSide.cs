@@ -55,7 +55,13 @@ namespace Bodzio2k.BattleSystem
         {
             base.end();
 
-            _context.CheckWinningCondtions();
+            if (_context.gamePhase == _context.whoStarts)
+            {
+                _context.CheckWinningCondtions();
+            }
+
+            return;
+            
         }
 
         private void UpdateUI()

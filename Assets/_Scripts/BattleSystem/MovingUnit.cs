@@ -33,6 +33,8 @@ namespace Bodzio2k.BattleSystem
 
             if (didMove)
             {
+                Debug.LogFormat("{0} did move to {1}...", unit.name, targetPosition);
+
                 unit.actionsRemaining--;
                 unit.battleSystem.touchedUnit = unit.transform.gameObject;
 
@@ -47,7 +49,7 @@ namespace Bodzio2k.BattleSystem
                     unit.sm.changeState<Unit.Idle>();
                 }
 
-                targetPosition = Vector3.zero; targetPosition = Vector3.zero;
+                targetPosition = Vector3.zero;
 
                 didMove = false;
             }
@@ -59,18 +61,15 @@ namespace Bodzio2k.BattleSystem
             GameObject selectedUnit = _context.selectedUnit;
             Vector3 startPostion = selectedUnit.transform.position;
 
-            Vector3 moveTo = selectedUnit.transform.position + (targetPosition * 1000f * Time.deltaTime);
-
             if (moveIsValid && moveIsWithinRange && (targetPosition != Vector3.zero))
             {
-                rb.MovePosition(targetPosition);
+                Vector3 moveTo = Vector3.Lerp(rb.transform.position, targetPosition, 100.0f * Time.deltaTime);
+                rb.MovePosition(moveTo);
 
                 unit.HideRangeOverlay();
                 unit.HideContextMenu();
 
-                Debug.LogFormat("{0} did move to {1}...", _context.selectedUnit.name, targetPosition);
-
-                didMove = true;
+                didMove = rb.transform.position == moveTo;
 
                 return;
             }

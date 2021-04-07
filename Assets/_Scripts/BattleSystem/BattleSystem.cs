@@ -175,27 +175,39 @@ namespace Bodzio2k.BattleSystem
 
         public bool DidSomeoneWin()
         {
+            bool didSomeoneWin = false;
+
             Debug.LogFormat("Checking winning conditions after round #{0}...", currentRoundNumber);
 
             numberOfPlayerOneUnitsInWinningArea = winningArea.Where(x => x.side == Side.PlayerOne && currentRoundNumber - dominationRoundsCount > x.roundEntered).Count();
             numberOfPlayerTwoUnitsInWinningArea = winningArea.Where(x => x.side == Side.PlayerTwo && currentRoundNumber - dominationRoundsCount > x.roundEntered).Count();
 
-            if (numberOfPlayerOneUnitsInWinningArea > 0)
+            if (numberOfPlayerOneUnitsInWinningArea > 0 && numberOfPlayerOneUnitsInWinningArea > numberOfPlayerTwoUnitsInWinningArea)
             {
+                Debug.LogFormat("Player one won after round #{0}...", currentRoundNumber);
+
                 playerTwoUnitsRemaining = 0;
 
-                return true;
+                didSomeoneWin = true;
             }
 
-            if (numberOfPlayerTwoUnitsInWinningArea > 0)
+            if (numberOfPlayerTwoUnitsInWinningArea > 0 && numberOfPlayerTwoUnitsInWinningArea > numberOfPlayerOneUnitsInWinningArea)
             {
+                Debug.LogFormat("Player two won after round #{0}...", currentRoundNumber);
+
                 playerOneUnitsRemaining = 0;
 
-                return true;
+                didSomeoneWin = true;
             }
 
-            return false;
-        }
+            if (numberOfPlayerOneUnitsInWinningArea == numberOfPlayerTwoUnitsInWinningArea)
+            {
+                Debug.LogFormat("Both sides have equal number of units in winning area after round #{0}...", currentRoundNumber);
 
+                didSomeoneWin = false;
+            }
+
+            return didSomeoneWin;
+        }
     }
 }

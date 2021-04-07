@@ -17627,10 +17627,12 @@ MonoBehaviour:
   gameMode: 1
   cameraPosition: {x: 0, y: 0, z: 0}
   cameraFocus: {fileID: 209838427}
-  roundNumber: 1
+  currentRoundNumber: 1
   dominationRoundsCount: 3
   playerOneUnitsRemaining: 5
   playerTwoUnitsRemaining: 5
+  numberOfPlayerOneUnitsInWinningArea: 0
+  numberOfPlayerTwoUnitsInWinningArea: 0
   mainMenu: {fileID: 924904955}
   canvas: {fileID: 779261444}
 --- !u!4 &306917737

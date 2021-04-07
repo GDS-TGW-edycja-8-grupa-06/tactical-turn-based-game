@@ -3,6 +3,7 @@ using UnityEngine;
 using Prime31.StateKit;
 using UnityEngine.Tilemaps;
 using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using Bodzio2k.Tiles;
 using Bodzio2k.UI;
@@ -10,6 +11,8 @@ using UnityEngine.UI;
 
 namespace Bodzio2k.BattleSystem
 {
+    using WinningArea = Dictionary<Unit.Unit, int>;
+
     public class BattleSystem : MonoBehaviour
     {
         [SerializeField]
@@ -47,21 +50,26 @@ namespace Bodzio2k.BattleSystem
         public GameObject cameraFocus;
 
         [HideInInspector]
-        public int roundNumber = 1;
+        public int currentRoundNumber = 1;
 
         [SerializeField]
-        public int dominationRoundsCount = 3;
+        public int dominationRoundsCount = 1;
 
         [HideInInspector]
         public int playerOneUnitsRemaining = 5;
 
         [HideInInspector]
-        public int playerTwoUnitsRemaining = 1;
+        public int playerTwoUnitsRemaining = 5;
 
         [HideInInspector]
-        public List<Dictionary<Unit.Unit, int>> winningArea = new List<Dictionary<Unit.Unit, int>>();
+        public int numberOfPlayerOneUnitsInWinningArea = 0;
 
-        
+        [HideInInspector]
+        public int numberOfPlayerTwoUnitsInWinningArea = 0;
+
+        [HideInInspector]
+        public List<WinningAreaEntry> winningArea = new List<WinningAreaEntry>();
+
         [SerializeField]
         public Canvas mainMenu;
 
@@ -165,11 +173,28 @@ namespace Bodzio2k.BattleSystem
             }
         }
 
-        public void CheckWinningCondtions()
+        public bool DidSomeoneWin()
         {
-            Debug.LogFormat("Checking winning conditions after round #{0}...", roundNumber);
+            Debug.LogFormat("Checking winning conditions after round #{0}...", currentRoundNumber);
 
-            return;
+            numberOfPlayerOneUnitsInWinningArea = winningArea.Where(x => x.side == Side.PlayerOne && currentRoundNumber - dominationRoundsCount > x.roundEntered).Count();
+            numberOfPlayerTwoUnitsInWinningArea = winningArea.Where(x => x.side == Side.PlayerTwo && currentRoundNumber - dominationRoundsCount > x.roundEntered).Count();
+
+            if (numberOfPlayerOneUnitsInWinningArea > 0)
+            {
+                playerTwoUnitsRemaining = 0;
+
+                return true;
+            }
+
+            if (numberOfPlayerTwoUnitsInWinningArea > 0)
+            {
+                playerOneUnitsRemaining = 0;
+
+                return true;
+            }
+
+            return false;
         }
 
     }

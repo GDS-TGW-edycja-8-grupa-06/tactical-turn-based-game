@@ -1,10 +1,11 @@
 ﻿using Prime31.StateKit;
 using System.Collections.Generic;
 using UnityEngine;
+using Bodzio2k.BattleSystem;
 
-namespace Bodzio2k.BattleSystem
+namespace Bodzio2k.Unit
 {
-    class EnteringWinnigArea : SKState<Unit.Unit>
+    class EnteringWinnigArea : SKState<Unit>
     {
         public override void update(float deltaTime)
         {
@@ -15,12 +16,13 @@ namespace Bodzio2k.BattleSystem
         {
             base.begin();
 
-            int roundNumber = _context.battleSystem.roundNumber;
-            Dictionary<Unit.Unit, int> enteringUnit = new Dictionary<Unit.Unit, int>
-            {
-                { _context, roundNumber }
-            };
+            int roundNumber = _context.battleSystem.currentRoundNumber;
 
+            //WinningArea enteringUnit = new WinningArea
+            //{
+            //    { _context, roundNumber }
+            //};
+            WinningAreaEntry enteringUnit = new WinningAreaEntry(_context, _context.side, roundNumber);
             _context.battleSystem.winningArea.Add(enteringUnit);
 
             //_context.sm.changeState<Unit.Idle>();

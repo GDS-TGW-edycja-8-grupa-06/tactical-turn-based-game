@@ -34,14 +34,22 @@ namespace Bodzio2k.BattleSystem
             _context.selectedUnit = null;
             _context.touchedUnit = null;
 
-            _machine.changeState<Idle>();
 
             if (_context.gamePhase == _context.whoStarts)
             {
-                _context.roundNumber++;
+                _context.currentRoundNumber++;
 
-                Debug.LogFormat("Round {0} started...", _context.roundNumber);
+                if (_context.DidSomeoneWin())
+                {
+                    _machine.changeState<GameOver>();
+
+                    return;
+                };
+
+                Debug.LogFormat("Round {0} started...", _context.currentRoundNumber);
             }
+
+            _machine.changeState<Idle>();
 
             UpdateUI();
         }
@@ -51,18 +59,18 @@ namespace Bodzio2k.BattleSystem
             unit.actionsRemaining = 2;
         }
 
-        public override void end()
-        {
-            base.end();
+        //public override void end()
+        //{
+        //    base.end();
 
-            if (_context.gamePhase == _context.whoStarts)
-            {
-                _context.CheckWinningCondtions();
-            }
+        //    if (_context.gamePhase == _context.whoStarts)
+        //    {
+                
+        //    }
 
-            return;
+        //    return;
             
-        }
+        //}
 
         private void UpdateUI()
         {
@@ -73,7 +81,7 @@ namespace Bodzio2k.BattleSystem
             roundAnnouncer.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(text);
 
             roundNumber = GameObject.Find("/UI/Canvas/RoundNumber");
-            text = $"round {_context.roundNumber}";
+            text = $"round {_context.currentRoundNumber}";
             roundNumber.GetComponent<TextMeshProUGUI>().SetText(text);
 
             turnIndicator1 = GameObject.Find("/UI/Canvas/PlayerOneTurnIndicator");

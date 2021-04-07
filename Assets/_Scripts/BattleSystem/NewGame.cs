@@ -43,7 +43,7 @@ namespace Bodzio2k.BattleSystem
             roundAnnouncer.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(text);
 
             roundNumber = GameObject.Find("/UI/Canvas/RoundNumber");
-            text = $"round {_context.roundNumber}";
+            text = $"round {_context.currentRoundNumber}";
             roundNumber.GetComponent<TextMeshProUGUI>().SetText(text);
 
             turnIndicator1 = GameObject.Find("/UI/Canvas/PlayerOneTurnIndicator");

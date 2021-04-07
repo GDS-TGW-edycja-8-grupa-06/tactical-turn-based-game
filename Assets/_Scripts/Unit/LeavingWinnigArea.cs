@@ -1,9 +1,11 @@
 ﻿using Prime31.StateKit;
+using Bodzio2k.BattleSystem;
 using UnityEngine;
+using System.Linq;
 
-namespace Bodzio2k.BattleSystem
+namespace Bodzio2k.Unit
 {
-    class LeavingWinnigArea : SKState<Unit.Unit>
+    class LeavingWinnigArea : SKState<Unit>
     {
         public override void update(float deltaTime)
         {
@@ -14,11 +16,11 @@ namespace Bodzio2k.BattleSystem
         {
             base.begin();
 
-            int roundNumber = _context.battleSystem.roundNumber;
+            int roundNumber = _context.battleSystem.currentRoundNumber;
 
             RemoveFromWinningArea(_context);
 
-            _context.sm.changeState<Unit.Idle>();
+            _context.sm.changeState<Idle>();
 
             Debug.LogFormat("{0} leaved winning area on round #{1}...", _context.name, roundNumber);
         }
@@ -28,9 +30,11 @@ namespace Bodzio2k.BattleSystem
             base.end();
         }
 
-        private void RemoveFromWinningArea(Unit.Unit unit)
+        private void RemoveFromWinningArea(Unit unit)
         {
-            unit.battleSystem.winningArea.RemoveAll(u => u.ContainsKey(unit));
+            WinningAreaEntry leavedArea = _context.battleSystem.winningArea.Where(x => x.unit == unit).First();
+
+            _context.battleSystem.winningArea.Remove(leavedArea);
         }
     }
 }

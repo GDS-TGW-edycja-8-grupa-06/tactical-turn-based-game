@@ -45,10 +45,10 @@ namespace Bodzio2k.Unit
         public float willReceiveDamage = 0.0f;
 
         [HideInInspector]
-        public float health = 100.0f;
+        public float health;
 
         [HideInInspector]
-        public float totalHealth = 100.0f;
+        public float totalHealth;
 
         [HideInInspector]
         public float damageMultiplier = 1.0f;
@@ -89,6 +89,7 @@ namespace Bodzio2k.Unit
             LoadSprites();
 
             health = properties.health;
+            totalHealth = properties.health;
 
             return;
         }
@@ -103,18 +104,10 @@ namespace Bodzio2k.Unit
 
                 contextMenuHandler = contextMenuInstance.GetComponent<ContextMenuHandler>();
 
-                EnableActions();
-
                 return;
             }
 
             return;
-        }
-
-        private void EnableActions()
-        {
-            //contextMenuHandler.buttonMove.enabled = actionsRemaining.Contains(Action.Move);
-            //contextMenuHandler.buttonAttack.enabled = actionsRemaining.Contains(Action.Attack);
         }
 
         public void HideContextMenu()

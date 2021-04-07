@@ -209,5 +209,12 @@ namespace Bodzio2k.BattleSystem
 
             return didSomeoneWin;
         }
+
+        public void RemoveFromWinningArea(Unit.Unit unit)
+        {
+            WinningAreaEntry leavedArea = winningArea.Where(x => x.unit == unit).First();
+
+            winningArea.Remove(leavedArea);
+        }
     }
 }

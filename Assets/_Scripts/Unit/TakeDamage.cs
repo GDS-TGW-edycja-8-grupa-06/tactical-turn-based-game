@@ -25,11 +25,6 @@ namespace Bodzio2k.Unit
             }
         }
 
-        public override void end()
-        {
-            base.end();
-        }
-
         public override void update(float deltaTime)
         {
             return;

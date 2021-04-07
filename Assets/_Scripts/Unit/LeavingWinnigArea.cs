@@ -18,7 +18,7 @@ namespace Bodzio2k.Unit
 
             int roundNumber = _context.battleSystem.currentRoundNumber;
 
-            RemoveFromWinningArea(_context);
+            _context.battleSystem.RemoveFromWinningArea(_context);
 
             _context.sm.changeState<Idle>();
 
@@ -28,13 +28,6 @@ namespace Bodzio2k.Unit
         public override void end()
         {
             base.end();
-        }
-
-        private void RemoveFromWinningArea(Unit unit)
-        {
-            WinningAreaEntry leavedArea = _context.battleSystem.winningArea.Where(x => x.unit == unit).First();
-
-            _context.battleSystem.winningArea.Remove(leavedArea);
         }
     }
 }

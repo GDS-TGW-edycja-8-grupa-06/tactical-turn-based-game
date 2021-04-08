@@ -42,8 +42,7 @@ namespace Bodzio2k.Unit
 
         private void PlayAudio()
         {
-            _context.audioSource.clip = _context.takeDamageClip;
-            _context.audioSource.Play();
+            _context.audioSource.PlayOneShot(_context.takeDamageClip, 0.5f);
         }
     }
 }

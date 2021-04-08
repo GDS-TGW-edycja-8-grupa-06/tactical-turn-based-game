@@ -6,6 +6,7 @@ using System;
 using UnityEngine.Tilemaps;
 using Bodzio2k.BattleSystem;
 using TMPro;
+using System.Collections;
 
 namespace Bodzio2k.Unit
 {
@@ -344,6 +345,8 @@ namespace Bodzio2k.Unit
             int unitsRemaining;
             string playerSide;
 
+            StartCoroutine(PlayAudioAndDie());
+
             if (side == Side.PlayerOne)
             {
                 battleSystem.playerOneUnitsRemaining--;
@@ -359,8 +362,6 @@ namespace Bodzio2k.Unit
 
             label = GameObject.Find($"/UI/Canvas/{playerSide}UnitsRemaining");
             label.GetComponent<TextMeshProUGUI>().SetText($"units remaining {unitsRemaining}");
-
-            this.gameObject.SetActive(false);
         }
 
         private void Update()
@@ -389,6 +390,19 @@ namespace Bodzio2k.Unit
         private void OnMouseEnter()
         {
             healthBar.SetActive(true);
+        }
+
+        private IEnumerator PlayAudioAndDie()
+        {
+            Debug.LogFormat("Did play one shot die clip for {0}", gameObject.name);
+
+            audioSource.PlayOneShot(dieClip);
+
+            yield return new WaitForSeconds(dieClip.length);
+
+            gameObject.SetActive(false);
+
+            Debug.LogFormat("{0} just died...", gameObject.name);
         }
     }
 }

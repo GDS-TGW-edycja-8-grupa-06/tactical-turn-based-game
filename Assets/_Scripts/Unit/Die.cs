@@ -1,5 +1,6 @@
 ﻿using Bodzio2k.BattleSystem;
 using Prime31.StateKit;
+using UnityEngine;
 
 namespace Bodzio2k.Unit
 {
@@ -8,9 +9,7 @@ namespace Bodzio2k.Unit
         public override void begin()
         {
             base.begin();
-
-            PlayAudio();
-
+            
             _context.GetComponent<Unit>().Die();
             
             if (_context.battleSystem.playerOneUnitsRemaining == 0 || _context.battleSystem.playerTwoUnitsRemaining == 0)
@@ -22,12 +21,6 @@ namespace Bodzio2k.Unit
         public override void update(float deltaTime)
         {
             return;
-        }
-
-        private void PlayAudio()
-        {
-            _context.audioSource.clip = _context.dieClip;
-            _context.audioSource.Play();
         }
     }
 }

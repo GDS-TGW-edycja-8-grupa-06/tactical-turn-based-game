@@ -70,6 +70,9 @@ namespace Bodzio2k.Unit
         [SerializeField]
         public AudioClip takeDamageClip;
 
+        [SerializeField]
+        public AudioClip dieClip;
+
         private void Start()
         {
             battleSystem = GameObject.Find("/BattleSystem").GetComponent<BattleSystem.BattleSystem>();

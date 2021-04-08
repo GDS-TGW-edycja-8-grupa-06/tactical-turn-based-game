@@ -9,8 +9,6 @@ namespace Bodzio2k.Unit
         {
             base.begin();
 
-            PlayAudio();
-
             _context.health -= _context.willReceiveDamage * _context.damageMultiplier;
 
             Debug.LogFormat("{0} received damage of {1}; damage multiplier {2}; health reiaminig {3}", _context.name, _context.willReceiveDamage, _context.damageMultiplier, _context.health);
@@ -23,6 +21,8 @@ namespace Bodzio2k.Unit
             }
             else
             {
+                PlayAudio();
+
                 _context.sm.changeState<Idle>();
             }
         }

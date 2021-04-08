@@ -146,6 +146,7 @@ MonoBehaviour:
   isImmobilized: 0
   audioSource: {fileID: 0}
   takeDamageClip: {fileID: 8300000, guid: d9d58b8af1d368e4e9077ed2fd9852ec, type: 3}
+  dieClip: {fileID: 8300000, guid: 4bdaf119a701629428a3e4005d73e521, type: 3}
 --- !u!61 &-2299121297899933306
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -9,8 +9,10 @@ namespace Bodzio2k.Unit
         {
             base.begin();
 
-            _context.GetComponent<Unit>().Die();
+            PlayAudio();
 
+            _context.GetComponent<Unit>().Die();
+            
             if (_context.battleSystem.playerOneUnitsRemaining == 0 || _context.battleSystem.playerTwoUnitsRemaining == 0)
             {
                 _context.battleSystem.sm.changeState<GameOver>();
@@ -20,6 +22,12 @@ namespace Bodzio2k.Unit
         public override void update(float deltaTime)
         {
             return;
+        }
+
+        private void PlayAudio()
+        {
+            _context.audioSource.clip = _context.dieClip;
+            _context.audioSource.Play();
         }
     }
 }

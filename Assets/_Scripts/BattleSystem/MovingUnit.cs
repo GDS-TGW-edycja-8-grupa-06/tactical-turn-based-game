@@ -82,6 +82,9 @@ namespace Bodzio2k.BattleSystem
             unit = _context.selectedUnit.GetComponent<Unit.Unit>();
             rb = _context.selectedUnit.GetComponent<Rigidbody2D>();
 
+            targetPosition = Vector3.zero;
+            didMove = false;
+
             canStepOntoBlueTiles = Array.Exists(unit.properties.tags, tag => tag == Tag.CanStepOntoBlueTiles);
 
             unit.CreateRangeOverlay(OverlayType.Move);

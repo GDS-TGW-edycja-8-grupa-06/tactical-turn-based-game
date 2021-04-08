@@ -64,6 +64,12 @@ namespace Bodzio2k.Unit
 
         private SpriteRenderer sr;
 
+        [HideInInspector]
+        public AudioSource audioSource;
+
+        [SerializeField]
+        public AudioClip takeDamageClip;
+
         private void Start()
         {
             battleSystem = GameObject.Find("/BattleSystem").GetComponent<BattleSystem.BattleSystem>();
@@ -85,6 +91,7 @@ namespace Bodzio2k.Unit
             canStepOntoBlueTiles = Array.Exists(properties.tags, tag => tag == Tag.CanStepOntoBlueTiles);
 
             sr = GetComponent<SpriteRenderer>();
+            TryGetComponent(out audioSource);
 
             LoadSprites();
 
@@ -237,7 +244,7 @@ namespace Bodzio2k.Unit
         public bool IsActionWithinRange(Action action, Vector3 targetPosition)
         {
             List<Vector3> availablePostions = GetAvailablePositions(Action.Move);
-            
+
             if (availablePostions.Any(postion => postion == targetPosition))
             {
                 return true;
@@ -333,7 +340,7 @@ namespace Bodzio2k.Unit
             GameObject label;
             int unitsRemaining;
             string playerSide;
-            
+
             if (side == Side.PlayerOne)
             {
                 battleSystem.playerOneUnitsRemaining--;
@@ -367,7 +374,7 @@ namespace Bodzio2k.Unit
             string unitFilename = gameObject.name;
 
             string path = $@"Units\{gameModeDir}\{unitFilename}";
-            
+
             sr.sprite = Resources.Load<Sprite>(path);
         }
 

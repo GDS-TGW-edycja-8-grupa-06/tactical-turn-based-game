@@ -17,11 +17,9 @@ namespace Bodzio2k.Tiles
                 
                 unit.battleSystem.selectedUnit = unit.gameObject;
 
-                if (unit.actionsRemaining < 2)
-                {
-                    unit.battleSystem.sm.changeState<ChangeSide>();
-                }
-
+                unit.battleSystem.sm.changeState<ChangeSide>();
+                unit.sm.changeState<Unit.Idle>();
+                
                 return;
             };
         }

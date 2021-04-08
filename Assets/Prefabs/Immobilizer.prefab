@@ -817,7 +817,7 @@ MonoBehaviour:
   healthBarGauge: {fileID: 4437130222725432536}
   isImmobilized: 0
   audioSource: {fileID: 0}
-  takeDamageClip: {fileID: 0}
+  takeDamageClip: {fileID: 8300000, guid: d9d58b8af1d368e4e9077ed2fd9852ec, type: 3}
 --- !u!61 &-4414925825389332824
 BoxCollider2D:
   m_ObjectHideFlags: 0

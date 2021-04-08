@@ -8,6 +8,9 @@ namespace Bodzio2k.BattleSystem
     class GameOver : SKState<BattleSystem>
     {
         private GameObject roundAnnouncer;
+        private float delay = 0.0f;
+        private float waitFor = 1.0f;
+        private bool skip = false;
 
         public override void begin()
         {
@@ -18,8 +21,20 @@ namespace Bodzio2k.BattleSystem
 
         public override void update(float deltaTime)
         {
-            if (Input.anyKey)
+            delay += deltaTime;
+
+            if(delay > waitFor && !skip)
             {
+                string text = "press any key to return to main menu";
+                roundAnnouncer.transform.GetChild(1).GetComponent<TextMeshProUGUI>().SetText(text);
+
+                skip = true;
+            }
+
+            if (Input.anyKey && delay > waitFor)
+            {
+                Debug.LogFormat("Waited for {0} secs...", delay);
+
                 _machine.changeState<ShowingMainMenu>();
             }
         }
@@ -32,7 +47,7 @@ namespace Bodzio2k.BattleSystem
             string text = _context.playerOneUnitsRemaining > 0 ? "player one wins" : "player two wins";
             roundAnnouncer.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(text);
 
-            text = "press any key to return to main menu";
+            text = "";
             roundAnnouncer.transform.GetChild(1).GetComponent<TextMeshProUGUI>().SetText(text);
         }
     }

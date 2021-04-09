@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1698902199164413302}
   - component: {fileID: 8189546469975152423}
   - component: {fileID: 1403581429773269849}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: BrownTile
   m_TagString: Object
   m_Icon: {fileID: 0}

@@ -21,6 +21,7 @@ namespace Bodzio2k.BattleSystem
         public LayerMask restrictedArea;
         public LayerMask walkableArea;
         public LayerMask blueTiles;
+        public LayerMask brownTiles;
 
         [HideInInspector]
         public GameObject selectedUnit;

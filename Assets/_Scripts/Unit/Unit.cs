@@ -302,7 +302,7 @@ namespace Bodzio2k.Unit
             return attackIsValid;
         }
 
-        private bool IsTileOccupied(Vector2 postion)
+        private bool IsTileOccupied(Vector2 position)
         {
             LayerMask forbiddenMoves = battleSystem.playerOneLayerMask | battleSystem.playerTwoLayerMask;
 
@@ -311,7 +311,7 @@ namespace Bodzio2k.Unit
                 forbiddenMoves = forbiddenMoves | battleSystem.blueTiles;
             }
 
-            RaycastHit2D hit = Physics2D.Raycast(postion, Vector2.zero, Mathf.Infinity, forbiddenMoves);
+            RaycastHit2D hit = Physics2D.Raycast(position, Vector2.zero, Mathf.Infinity, forbiddenMoves);
 
             if (hit.collider != null)
             {
